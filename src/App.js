@@ -3,7 +3,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 // Components
-
+import Dashborad from "./dashboard/"
 import Signup from "./welcome/SignupForm";
 import Login from "./welcome/LoginForm";
 import "./App.css";
@@ -28,6 +28,9 @@ return(
             <Login />
           </Route>
           <Redirect to="/login"/>
+          <Route path="/dashboard">
+            <Dashborad></Dashborad>
+          </Rotue>
         </Switch>
       </div>
     </div>
