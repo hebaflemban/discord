@@ -40,6 +40,7 @@ export const login = (user) => {
       });
     } catch (error) {
       console.log("Couldn't login");
+      alert(error);
     }
   };
 };
