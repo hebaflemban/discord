@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Signup = () => {
+const SignupForm = () => {
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -73,4 +73,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignupForm;

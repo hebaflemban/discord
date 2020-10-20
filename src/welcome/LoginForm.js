@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const LoginForm = () => {
   const [userData, setUserData] = useState({
     username: "",
     password: "",
   });
- 
-  
 
   const handleChange = (event) =>
     setUserData({ ...userData, [event.target.name]: event.target.value });
@@ -62,4 +60,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;

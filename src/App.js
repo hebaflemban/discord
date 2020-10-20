@@ -8,6 +8,7 @@ import Signup from "./welcome/SignupForm";
 import Login from "./welcome/LoginForm";
 import "./App.css";
 import { connect } from "react-redux";
+import Welcome from "./welcome/";
 
 function App({ user, channels, messeges }) {
   console.log("user", user);
@@ -16,18 +17,22 @@ function App({ user, channels, messeges }) {
   return (
     <div id="app" className="container-fluid">
       <div className="row">
-        <div className="col-2"></div>
+        <div className="col-auto"></div>
         <div className="content col-10">
           <Switch>
             <Route path="/signup">
               <Signup />
+              <Redirect to="/login" />
             </Route>
             <Route path="/login">
               <Login />
             </Route>
-            <Redirect to="/login" />
+
             <Route path="/dashboard">
               <Dashborad />
+            </Route>
+            <Route path="/notdiscord">
+              <Welcome />
             </Route>
           </Switch>
         </div>
