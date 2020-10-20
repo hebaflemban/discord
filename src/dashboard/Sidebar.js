@@ -1,11 +1,15 @@
 import React from 'react';
 
-function App() {
+// components
+import ChannelList from "./ChannelList";
+
+function Sidebar() {
   return (
-    <div>
+    <div className="border border-danger">
         <h1>this is the side bar</h1>
+        <ChannelList></ChannelList>
     </div>
   );
 }
 
-export default App;
+export default Sidebar;

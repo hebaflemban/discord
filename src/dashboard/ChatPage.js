@@ -1,11 +1,19 @@
 import React from 'react';
 
-function App() {
+// components
+import MsgList from "./MsgList"
+import Send from "./Send"
+
+function ChatPage() {
   return (
-    <div>
-        <h1>this is the chanel list</h1>
+    <div className="border border-primary">
+      <h1>this is the chat page</h1>
+      <MsgList></MsgList>
+      <div>
+        <Send></Send>
+      </div>
     </div>
   );
 }
 
-export default App;
+export default ChatPage;

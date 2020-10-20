@@ -1,11 +1,22 @@
 import React from 'react';
 
-function App() {
+// components
+import Msg from "./Msg";
+
+function MsgList() {
+  // here sould be a msg loop
+  const msgs = [1, 2, 3]
+
+  const msgList = msgs.map(msg => (
+    <Msg key={msg}></Msg>
+  ));
+
   return (
-    <div>
-        <h1>this is the chanel list</h1>
+    <div className="border border-warning m-5">
+      <h1>this is the msg list</h1>
+      {msgList}
     </div>
   );
 }
 
-export default App;
+export default MsgList;
