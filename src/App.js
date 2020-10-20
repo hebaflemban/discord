@@ -1,12 +1,20 @@
 import React from "react";
+
 import { Switch, Route, Redirect } from "react-router-dom";
 
 // Components
 
 import Signup from "./welcome/SignupForm";
 import Login from "./welcome/LoginForm";
+import "./App.css";
+import { connect } from "react-redux";
 
-const App = () => (
+
+function App({ user, channels, messeges }) {
+  console.log("user", user);
+  console.log("channels", channels);
+  console.log("messeges", messeges);
+return(
   <div id="app" className="container-fluid">
     <div className="row">
       <div className="col-2">
@@ -26,4 +34,13 @@ const App = () => (
   </div>
 );
 
-export default App;
+}
+
+
+const mapStateToProps = ({ user, channels, messeges }) => ({
+  user,
+  channels,
+  messeges,
+});
+
+export default connect(mapStateToProps)(App);
