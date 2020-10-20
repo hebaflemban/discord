@@ -1,27 +1,41 @@
 import React from "react";
+
+import { Switch, Route, Redirect } from "react-router-dom";
+
+// Components
+
+import Signup from "./welcome/SignupForm";
+import Login from "./welcome/LoginForm";
 import "./App.css";
 import { connect } from "react-redux";
 
-/*yarn adds:
-redux
-redux-thunk
-react-redux
-react-router-dom
-jwt-decode
-js-cookie
-*/
 
 function App({ user, channels, messeges }) {
   console.log("user", user);
   console.log("channels", channels);
   console.log("messeges", messeges);
+return(
+  <div id="app" className="container-fluid">
+    <div className="row">
+      <div className="col-2">
+      </div>
+      <div className="content col-10">
+        <Switch>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Redirect to="/login"/>
+        </Switch>
+      </div>
+    </div>
+  </div>
+);
 
-  return (
-    <>{/* <p>{user}</p>
-      <p>{channels}</p>
-      <p>{messeges}</p> */}</>
-  );
 }
+
 
 const mapStateToProps = ({ user, channels, messeges }) => ({
   user,
