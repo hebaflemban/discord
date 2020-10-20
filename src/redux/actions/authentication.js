@@ -1,15 +1,12 @@
-import { LOGIN, SIGNUP, LOGOUT } from "./actionTypes";
+import { LOGIN, SIGNUP, LOGOUT, ERROR, RESET } from "./actionTypes";
 import instance from "./instance";
 import decode from "jwt-decode";
 import Cookies from "js-cookie";
 
 export const isTokenValid = () => {
   console.log("do we have a token yet ", !!Cookies.get("token"));
-  //const token =
-    //"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNjcsInVzZXJuYW1lIjoiaGViYSIsImV4cCI6MTYwMzIzMTQyMiwiZW1haWwiOiIifQ.AUK7vVSISWAI30WV2oTMs27AP4YF6LhTuxH2hRQH5DY";
-
   return (dispatch) => {
-     const token = Cookies.get("token");
+    const token = Cookies.get("token");
     if (token) {
       const user = decode(token);
       console.log("do we have a token, user?", token, user);
@@ -39,8 +36,11 @@ export const login = (user) => {
         payload: decode(token),
       });
     } catch (error) {
-      console.log("Couldn't login");
-      alert(error);
+      const { responseText } = error.request;
+      dispatch({
+        type: ERROR,
+        payload: responseText,
+      });
     }
   };
 };
@@ -57,7 +57,10 @@ export const signup = (user) => {
         payload: decode(token),
       });
     } catch (error) {
-      console.log("Couldn't sign you up");
+      dispatch({
+        type: ERROR,
+        payload: error.request.responseText,
+      });
     }
   };
 };
@@ -68,5 +71,11 @@ export const logout = () => {
   return {
     type: LOGOUT,
     payload: null,
+  };
+};
+
+export const reset = () => {
+  return {
+    type: RESET,
   };
 };
