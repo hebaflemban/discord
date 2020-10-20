@@ -36,14 +36,13 @@ function App({
         <div className="col-auto"></div>
         <div className="content col-10">
           <Switch>
+          
             <Route path="/signup">
               <Signup />
-              <Redirect to="/login" />
             </Route>
             <Route path="/login">
               <Login />
             </Route>
-
             <Route path="/dashboard">
               <Dashborad />
             </Route>

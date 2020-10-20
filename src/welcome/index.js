@@ -3,6 +3,8 @@ import React from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import {Redirect } from "react-router-dom";
 
 // due to the complexity of the dashboard
 // this file is to be the base file of the dashboard so other file can fit in one place only
@@ -11,7 +13,12 @@ import { Link } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 
-function Welcome() {
+function Welcome({user}) {
+  if(user){
+    return(
+    <Redirect to="/dashboard"/>
+  )}
+
   return (
     <Jumbotron className="mt-5">
       <h1>Hello, stranger!</h1>
@@ -28,4 +35,7 @@ function Welcome() {
   );
 }
 
-export default Welcome;
+const mapStateToProps = ({ user}) => ({
+  user
+});
+export default connect(mapStateToProps)(Welcome);
