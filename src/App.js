@@ -26,7 +26,9 @@ function App({
   send,
 }) {
   // addChannel(" we love coded ");
-  // send(830, "we see you");
+  // ()=> send(830, "we see you");
+  console.log("channel", channels);
+  console.log("messeges", messeges);
 
   return (
     <div id="app" className="container-fluid">
