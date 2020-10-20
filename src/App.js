@@ -1,16 +1,49 @@
-import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
+import React from "react";
 
-// dashbord compontent
+import { Switch, Route, Redirect } from "react-router-dom";
+
+// Components
 import Dashborad from "./dashboard/"
+import Signup from "./welcome/SignupForm";
+import Login from "./welcome/LoginForm";
+import "./App.css";
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div className="container-fluid h-100">
-      <Dashborad></Dashborad>
+
+function App({ user, channels, messeges }) {
+  console.log("user", user);
+  console.log("channels", channels);
+  console.log("messeges", messeges);
+return(
+  <div id="app" className="container-fluid">
+    <div className="row">
+      <div className="col-2">
+      </div>
+      <div className="content col-10">
+        <Switch>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Redirect to="/login"/>
+          <Route path="/dashboard">
+            <Dashborad></Dashborad>
+          </Rotue>
+        </Switch>
+      </div>
     </div>
-  );
+  </div>
+);
+
 }
 
-export default App;
+
+const mapStateToProps = ({ user, channels, messeges }) => ({
+  user,
+  channels,
+  messeges,
+});
+
+export default connect(mapStateToProps)(App);

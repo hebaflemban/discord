@@ -8,6 +8,8 @@ function Sidebar() {
     <div className="border border-danger">
         <h1>this is the side bar</h1>
         <ChannelList></ChannelList>
+      //logout
+
     </div>
   );
 }
