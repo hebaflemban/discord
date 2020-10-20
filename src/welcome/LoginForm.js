@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import {login} from "../redux/actions"
+import { Switch, Route, Redirect } from "react-router-dom";
 
-const LoginForm = () => {
+const LoginForm = ({login,user}) => {
+  
+  
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -11,13 +16,21 @@ const LoginForm = () => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
 
   const handleSubmit = (event) => {
+    console.log("testtttttt")
     event.preventDefault();
-    alert("I DON'T WORK YET");
+    login(userData)
   };
 
   const { username, password } = userData;
 
+  if(user){
+    return(
+    <Redirect to="/dashboard"/>
+  )}
+
   return (
+    <> 
+    
     <div className="col-6 mx-auto">
       <div className="card my-5">
         <div className="card-body">
@@ -57,7 +70,16 @@ const LoginForm = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
+const mapStateToProps = ({ user}) => ({
+  user
+});
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (user) => dispatch(login(user))
+  };
+};
 
-export default LoginForm;
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
