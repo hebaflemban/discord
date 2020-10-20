@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import {signup} from "../redux/actions"
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import {Redirect } from "react-router-dom";
 
-const SignupForm = ({signup,user}) => {
+//action
+import { signup } from "../redux/actions";
+
+//component
+import ErrorAlert from "./ErrorAlert";
+
+const SignupForm = ({ signup, user, error }) => {
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -16,15 +20,16 @@ const SignupForm = ({signup,user}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    signup(userData)
+    signup(userData);
   };
 
   const { username, email, password } = userData;
-  if(user){
-    return(
-    <Redirect to="/dashboard"/>
-  )}
-
+  if (user) {
+    return <Redirect to="/dashboard" />;
+  }
+  if (error) {
+    return <ErrorAlert />;
+  }
   return (
     <div className="col-6 mx-auto">
       <div className="card my-5">
@@ -80,15 +85,15 @@ const SignupForm = ({signup,user}) => {
   );
 };
 
-const mapStateToProps = ({ user}) => ({
-  user
+const mapStateToProps = ({ authRes }) => ({
+  user: authRes.user,
+  error: authRes.errorMessage,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: (user) => dispatch(signup(user))
+    signup: (user) => dispatch(signup(user)),
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
-
