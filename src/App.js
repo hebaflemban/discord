@@ -9,11 +9,25 @@ import Login from "./welcome/LoginForm";
 import "./App.css";
 import { connect } from "react-redux";
 import Welcome from "./welcome/";
+import {
+  addChannel,
+  fetchChannels,
+  fetchMesseges,
+  send,
+} from "./redux/actions";
 
-function App({ user, channels, messeges }) {
-  console.log("user", user);
-  console.log("channels", channels);
-  console.log("messeges", messeges);
+function App({
+  user,
+  channels,
+  messeges,
+  addChannel,
+  fetchChannels,
+  fetchMesseges,
+  send,
+}) {
+  // addChannel(" we love coded ");
+  // send(830, "we see you");
+
   return (
     <div id="app" className="container-fluid">
       <div className="row">
@@ -46,5 +60,13 @@ const mapStateToProps = ({ user, channels, messeges }) => ({
   channels,
   messeges,
 });
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addChannel: (channelName) => dispatch(addChannel(channelName)),
+    fetchChannels: () => dispatch(fetchChannels),
+    fetchMesseges: () => dispatch(fetchMesseges),
+    send: (CHANNEL_ID, messege) => dispatch(send(CHANNEL_ID, messege)),
+  };
+};
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -14,6 +14,6 @@ store.dispatch(isTokenValid());
 if (store.dispatch(isTokenValid()))
   console.log("the res", store.dispatch(isTokenValid()));
 store.dispatch(fetchChannels());
-// store.dispatch(fetchMesseges(1));
+store.dispatch(fetchMesseges(1));
 
 export default store;

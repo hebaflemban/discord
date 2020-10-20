@@ -23,8 +23,11 @@ export const fetchChannels = () => async (dispatch) => {
 
 export const addChannel = (channelName) => async (dispatch) => {
   try {
-    const res = await instance.post("channels/create/ ", channelName);
+    const data = { name: channelName };
+    const res = await instance.post("channels/create/ ", data);
     const newChannel = res.data;
+    console.log("channel has been added");
+
     dispatch({
       type: ADD_CHANNEL,
       payload: newChannel,
