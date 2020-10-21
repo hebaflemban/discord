@@ -1,41 +1,49 @@
-import React, { useState } from 'react';
-import { propTypes } from 'react-bootstrap/esm/Image';
-import { connect } from 'react-redux';
-import { addChannel } from '../redux/actions';
+import React, { useState } from "react";
+import { connect } from "react-redux";
 
 // action
 import { logout } from "../redux/actions";
+import { addChannel } from "../redux/actions";
 
 // components
 import Button from "react-bootstrap/Button";
 import ChannelList from "./ChannelList";
 
-function Sidebar({ user, logout }) {
+function Sidebar({ user, addChannel, logout }) {
   const [chnlName, setChnlName] = useState("");
+
   const onChange = (new_chnl) => {
     setChnlName(new_chnl);
-  }
-  addChannel(" we love coded ");
+  };
 
   return (
     <div className="border border-danger">
-        <h1>this is the side bar</h1>
-        <input className="" type="text" onChange={e => onChange(e.target.value)} value={chnlName}/>
-        <input className="btn btn-primary" type="button" value="submit" onClick={() => props.addChannel(chnlName)} />
-          
-        <hr></hr>
-        <ChannelList></ChannelList>
+      <h1>this is the side bar</h1>
+      <input
+        className=""
+        type="text"
+        onChange={(e) => onChange(e.target.value)}
+        value={chnlName}
+      />
+      <input
+        className="btn btn-primary"
+        type="button"
+        value="submit"
+        onClick={() => addChannel(chnlName)}
+      />
+
+      <hr></hr>
       <Button variant="danger" onClick={logout}>
         Log out
       </Button>
-
+      <ChannelList></ChannelList>
     </div>
   );
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addChannel: (val) => dispatch(addChannel(val))
+    addChannel: (val) => dispatch(addChannel(val)),
     logout: () => dispatch(logout()),
   };
 };

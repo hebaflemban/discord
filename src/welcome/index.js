@@ -20,7 +20,7 @@ function Welcome({ user }) {
       <p>Welcome to our Not Discord messeging platform.</p>
       <p>
         <Link to={"/login"}>
-          <Button variant="success">Login</Button>
+          <Button variant="success mx-2">Login</Button>
         </Link>
         <Link to={"/signup"}>
           <Button variant="warning">Sign up</Button>
