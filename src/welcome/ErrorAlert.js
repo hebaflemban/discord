@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 //action
 import { reset } from "../redux/actions";
@@ -11,12 +11,13 @@ import Button from "react-bootstrap/Button";
 
 function ErrorAlert({ reset, error }) {
   const [show, setShow] = useState(true);
+  const history = useHistory();
   console.log(error);
 
   const handleClose = () => {
     reset();
     setShow(false);
-    return <Redirect to="/" />;
+    history.push("/");
   };
 
   if (show) {

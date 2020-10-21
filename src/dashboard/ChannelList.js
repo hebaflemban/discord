@@ -5,12 +5,22 @@ import { fetchMesseges, selectChannel } from "../redux/actions";
 const ChannelList = (props) => {
   const chanels = props.channels;
   // img_url, owner, name, id
-
+  let change = true;
+  let timerId;
   const handleClick = (chnl) => {
-    console.log(chnl);
-    props.fetchMesseges(chnl.id);
+    change = !change;
+    console.log(change);
+    timerId = setInterval(() => props.fetchMesseges(chnl.id), 2000);
     props.selectChannel(chnl.id);
   };
+
+  // after 5 seconds stop
+  // if (change) {
+  //   console.log("we're not fetching anymore");
+  //   setTimeout(() => {
+  //     clearInterval(timerId);
+  //   }, 500);
+  // }
 
   let chanelCards = chanels.map((chnl) => (
     <div key={chnl.name + chnl.id}>
