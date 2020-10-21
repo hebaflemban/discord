@@ -1,16 +1,33 @@
-import { SET_CHANNELS, ADD_CHANNEL } from "../actions";
+import { SET_CHANNELS, ADD_CHANNEL, SELECT_CHANNEL } from "../actions";
 
-const initialState = [];
+const initialState = {
+  channels: [],
+  current_channel: {}
+};
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_CHANNELS:
       const channels = payload;
-      return channels;
+      return {
+        channels: channels,
+        current_channel: state.current_channel
+      };
 
     case ADD_CHANNEL:
       const newChannel = payload;
-      return [...state, newChannel];
+      return {
+        channels: [...state.channels, newChannel],
+        current_channel: state.current_channel
+      };
+
+    case SELECT_CHANNEL:
+      const channel_id = payload;
+      const current_channel = state.channels.find(channel => channel.id === channel_id)
+      return {
+        ...state, 
+        current_channel
+      };
 
     default:
       return state;

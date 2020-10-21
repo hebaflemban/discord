@@ -1,13 +1,12 @@
 import { combineReducers } from "redux";
 
-// Reducers
 import authRes from "./authentication";
-import channels from "./channels";
+import channelsReducer from "./channels";
 import messeges from "./messeges";
 
 const rootReducer = combineReducers({
   authRes,
-  channels,
+  channelsReducer,
   messeges,
 });
 

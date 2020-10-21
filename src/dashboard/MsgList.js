@@ -1,14 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 // components
 import Msg from "./Msg";
 
-function MsgList() {
+const MsgList = (props) => {
   // here sould be a msg loop
-  const msgs = [1, 2, 3]
+  const msgs = props.msgs
 
   const msgList = msgs.map(msg => (
-    <Msg key={msg}></Msg>
+    <Msg key={msg.id} msg={msg}></Msg>
   ));
 
   return (
@@ -19,4 +20,10 @@ function MsgList() {
   );
 }
 
-export default MsgList;
+const mapStateToProps = (state) => ({
+
+  msgs: state.messeges
+})
+
+
+export default connect(mapStateToProps)(MsgList);

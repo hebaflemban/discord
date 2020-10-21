@@ -1,10 +1,23 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { fetchMesseges, selectChannel } from '../redux/actions';
 
-function ChannelList() {
-    const chanels = ['G1', 'G2', 'G3', 'G4', 'G5'];
+const ChannelList = (props) => {
+    const chanels = props.channels;
     // img_url, owner, name, id
+
+    const handleClick = (chnl) => {
+        console.log(chnl)
+        props.fetchMesseges(chnl.id)
+        props.selectChannel(chnl.id)
+
+    }
+
     let chanelCards = chanels.map(chnl => (
-        <p key={chnl}>{chnl}</p>
+        <div key={chnl.name + chnl.id}>
+            <p className="btn btn-block btn-lg btn-dark" onClick={() => handleClick(chnl)}>{chnl.name}</p>
+            <span>{chnl.owner}</span>
+        </div>
     ))
     return (
         <div className="border border-warning m-5">
@@ -13,4 +26,17 @@ function ChannelList() {
     );
 }
 
-export default ChannelList;
+const mapStateToProps = ({channelsReducer}) => ({
+    // channels: state.channels
+    channels: channelsReducer.channels,
+
+})
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchMesseges: (channel_id) => dispatch(fetchMesseges(channel_id)),
+        selectChannel: (channel_id) => dispatch(selectChannel(channel_id))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChannelList);
