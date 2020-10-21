@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { fetchMesseges, selectChannel } from "../redux/actions";
+import SearchBar from "./SearchBar"
 
 const ChannelList = (props) => {
+  const [query, setQeury] = useState("");
   const chanels = props.channels;
   // img_url, owner, name, id
+
+  const filterChannels = () => {
+    return chanels.filter((chanel) => {
+      return `${chanel.name}`
+        .toLowerCase()
+        .includes(query.toLowerCase());
+    });
+  };
+
 
   const handleClick = (chnl) => {
     console.log(chnl);
@@ -12,7 +23,7 @@ const ChannelList = (props) => {
     props.selectChannel(chnl.id);
   };
 
-  let chanelCards = chanels.map((chnl) => (
+  let chanelCards = filterChannels().map((chnl) => (
     <div key={chnl.name + chnl.id}>
       <p
         className="btn btn-block btn-lg btn-dark"
@@ -23,7 +34,10 @@ const ChannelList = (props) => {
       <span>{chnl.owner}</span>
     </div>
   ));
-  return <div className="border border-warning m-5">{chanelCards}</div>;
+  return <div className="border border-warning m-5">
+    <SearchBar onChange={setQeury} placeholder="Search for Channel"/>
+    {chanelCards}
+    </div>;
 };
 
 const mapStateToProps = ({ channelsReducer }) => {

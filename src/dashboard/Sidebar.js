@@ -22,6 +22,7 @@ function Sidebar({ user, addChannel, logout }) {
       <input
         className=""
         type="text"
+        placeholder="Create New Channel"
         onChange={(e) => onChange(e.target.value)}
         value={chnlName}
       />
