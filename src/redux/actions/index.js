@@ -9,6 +9,8 @@ export {
   LOGIN,
   SIGNUP,
   LOGOUT,
+  ERROR,
+  RESET,
 } from "./actionTypes";
 
 /* Channels
@@ -28,4 +30,4 @@ send: sends a message to a specific channel. Requires authentication
 export { fetchMesseges, updateMesseges, send } from "./messeges";
 
 // Authentication
-export { login, logout, signup, isTokenValid } from "./authentication";
+export { login, logout, signup, isTokenValid, reset } from "./authentication";

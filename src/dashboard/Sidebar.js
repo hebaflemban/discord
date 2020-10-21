@@ -3,10 +3,14 @@ import { propTypes } from 'react-bootstrap/esm/Image';
 import { connect } from 'react-redux';
 import { addChannel } from '../redux/actions';
 
+// action
+import { logout } from "../redux/actions";
+
 // components
+import Button from "react-bootstrap/Button";
 import ChannelList from "./ChannelList";
 
-function Sidebar(props) {
+function Sidebar({ user, logout }) {
   const [chnlName, setChnlName] = useState("");
   const onChange = (new_chnl) => {
     setChnlName(new_chnl);
@@ -21,7 +25,9 @@ function Sidebar(props) {
           
         <hr></hr>
         <ChannelList></ChannelList>
-      //logout
+      <Button variant="danger" onClick={logout}>
+        Log out
+      </Button>
 
     </div>
   );
@@ -29,10 +35,12 @@ function Sidebar(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // fetchMesseges: (channel_id) => dispatch(fetchMesseges(channel_id))
-    // 
     addChannel: (val) => dispatch(addChannel(val))
-  }
-}
+    logout: () => dispatch(logout()),
+  };
+};
 
-export default connect(null,mapDispatchToProps)(Sidebar);
+const mapStateToProps = ({ authRes }) => ({
+  user: authRes.user,
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

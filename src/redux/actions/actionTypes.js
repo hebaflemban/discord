@@ -2,6 +2,8 @@
 export const LOGIN = "LOGIN";
 export const SIGNUP = "SIGNUP";
 export const LOGOUT = "LOGOUT";
+export const ERROR = "ERROR";
+export const RESET = "RESET";
 
 // Channel Actions
 export const SET_CHANNELS = "SET_CHANNELS";

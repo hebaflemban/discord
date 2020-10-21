@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import {login} from "../redux/actions"
-import { Switch, Route, Redirect } from "react-router-dom";
 
-const LoginForm = ({login,user}) => {
-  
-  
+//action
+import { login } from "../redux/actions";
+
+//component
+import ErrorAlert from "./ErrorAlert";
+
+const LoginForm = ({ login, user, error }) => {
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -16,21 +18,23 @@ const LoginForm = ({login,user}) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
 
   const handleSubmit = (event) => {
-    console.log("testtttttt")
+    console.log("testtttttt");
     event.preventDefault();
-    login(userData)
+    login(userData);
+    console.log(user);
   };
 
   const { username, password } = userData;
 
-  if(user){
-    return(
-    <Redirect to="/dashboard"/>
-  )}
+  if (user) {
+    return <Redirect to="/dashboard" />;
+  }
+
+  if (error) {
+    return <ErrorAlert />;
+  }
 
   return (
-    <> 
-    
     <div className="col-6 mx-auto">
       <div className="card my-5">
         <div className="card-body">
@@ -70,15 +74,15 @@ const LoginForm = ({login,user}) => {
         </div>
       </div>
     </div>
-    </>
   );
 };
-const mapStateToProps = ({ user}) => ({
-  user
+const mapStateToProps = ({ authRes }) => ({
+  user: authRes.user,
+  error: authRes.errorMessage,
 });
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (user) => dispatch(login(user))
+    login: (user) => dispatch(login(user)),
   };
 };
 

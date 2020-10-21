@@ -1,13 +1,12 @@
-import { LOGIN, SIGNUP, LOGOUT } from "./actionTypes";
+import { LOGIN, SIGNUP, LOGOUT, ERROR, RESET } from "./actionTypes";
 import instance from "./instance";
 import decode from "jwt-decode";
 import Cookies from "js-cookie";
 
 export const isTokenValid = () => {
   console.log("do we have a token yet ", !!Cookies.get("token"));
-
   return (dispatch) => {
-     const token = Cookies.get("token");
+    const token = Cookies.get("token");
     if (token) {
       const user = decode(token);
       console.log("do we have a token, user?", token, user);
@@ -37,7 +36,11 @@ export const login = (user) => {
         payload: decode(token),
       });
     } catch (error) {
-      console.log("Couldn't login");
+      const { responseText } = error.request;
+      dispatch({
+        type: ERROR,
+        payload: responseText,
+      });
     }
   };
 };
@@ -54,7 +57,10 @@ export const signup = (user) => {
         payload: decode(token),
       });
     } catch (error) {
-      console.log("Couldn't sign you up");
+      dispatch({
+        type: ERROR,
+        payload: error.request.responseText,
+      });
     }
   };
 };
@@ -65,5 +71,11 @@ export const logout = () => {
   return {
     type: LOGOUT,
     payload: null,
+  };
+};
+
+export const reset = () => {
+  return {
+    type: RESET,
   };
 };
