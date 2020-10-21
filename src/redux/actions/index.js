@@ -1,6 +1,7 @@
 // Types
 export {
   SET_CHANNELS,
+  SELECT_CHANNEL,
   ADD_CHANNEL,
   SET_MESSEGES,
   UPDATE_MESSEGES,
@@ -15,7 +16,7 @@ fetchChannels: gets a list of all channels. Requires authentication.
 addChannel: creates a new channel. Requires authentication
             Expects a payload like this: {name: <NEW_CHANNEL_NAME>}
 */
-export { fetchChannels, addChannel } from "./channels";
+export { fetchChannels, addChannel, selectChannel } from "./channels";
 
 /* Messeges
 fetchMesseges: gets all the messages in a specific channel. Requires authentication.

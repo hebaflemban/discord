@@ -1,4 +1,4 @@
-import { SET_CHANNELS, ADD_CHANNEL } from "./actionTypes";
+import { SET_CHANNELS, ADD_CHANNEL, SELECT_CHANNEL } from "./actionTypes";
 import instance from "./instance";
 
 /* Channels
@@ -36,4 +36,13 @@ export const addChannel = (channelName) => async (dispatch) => {
     console.error(error.response.data);
     console.log("Channel couldn't be created");
   }
+};
+
+// this one is to save the current channel ()
+export const selectChannel = (channel_id) => {
+  return {
+    type: SELECT_CHANNEL,
+    payload: channel_id,
+  };
+
 };

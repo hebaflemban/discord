@@ -5,6 +5,7 @@ export const LOGOUT = "LOGOUT";
 
 // Channel Actions
 export const SET_CHANNELS = "SET_CHANNELS";
+export const SELECT_CHANNEL = "SELECT_CHANNEL";
 export const ADD_CHANNEL = "ADD_CHANNEL";
 
 // Messeges Actions

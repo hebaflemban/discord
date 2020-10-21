@@ -56,9 +56,9 @@ function App({
   );
 }
 
-const mapStateToProps = ({ user, channels, messeges }) => ({
+const mapStateToProps = ({ user, channelsReducer, messeges }) => ({
   user,
-  channels,
+  channels:channelsReducer.channels,
   messeges,
 });
 const mapDispatchToProps = (dispatch) => {
