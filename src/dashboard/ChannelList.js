@@ -7,6 +7,8 @@ const ChannelList = (props) => {
   const [query, setQeury] = useState("");
   const chanels = props.channels;
   // img_url, owner, name, id
+  let change = true;
+  let timerId;
 
   const filterChannels = () => {
     return chanels.filter((chanel) => {
@@ -16,12 +18,22 @@ const ChannelList = (props) => {
     });
   };
 
-
   const handleClick = (chnl) => {
-    console.log(chnl);
-    props.fetchMesseges(chnl.id);
+    change = !change;
+    console.log(change);
+    timerId = setInterval(() => props.fetchMesseges(chnl.id), 2000);
     props.selectChannel(chnl.id);
   };
+
+ 
+  // after 5 seconds stop
+  // if (change) {
+  //   console.log("we're not fetching anymore");
+  //   setTimeout(() => {
+  //     clearInterval(timerId);
+  //   }, 500);
+  // }
+
 
   let chanelCards = filterChannels().map((chnl) => (
     <div key={chnl.name + chnl.id}>
