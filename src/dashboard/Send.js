@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { send } from '../redux/actions';
 import Picker from 'emoji-picker-react';
+import Giphy from './Giphy';
 
 function Send(props) {
   const [msg, setMsg] = useState("")
@@ -47,6 +48,7 @@ function Send(props) {
               <span>No emoji Chosen</span>
             )}
           <Picker onEmojiClick={onEmojiClick} />
+          <Giphy />
         </div>
       </div>
     </div>
