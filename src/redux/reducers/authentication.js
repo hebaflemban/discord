@@ -3,6 +3,7 @@ import { LOGIN, SIGNUP, LOGOUT, ERROR, RESET } from "../actions/";
 const initialState = {
   user: null,
   errorMessage: false,
+  loading: true
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -14,6 +15,7 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         user: payload,
         errorMessage: false,
+        loading: false
       };
 
     case ERROR:

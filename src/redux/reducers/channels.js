@@ -3,6 +3,7 @@ import { SET_CHANNELS, ADD_CHANNEL, SELECT_CHANNEL } from "../actions";
 const initialState = {
   channels: [],
   current_channel: {},
+  loading: true
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -12,6 +13,7 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         channels: channels,
         current_channel: channels[0],
+        loading: false
       };
 
     case ADD_CHANNEL:
@@ -19,6 +21,7 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         channels: [...state.channels, newChannel],
         current_channel: state.current_channel,
+        loading: false
       };
 
     case SELECT_CHANNEL:
@@ -27,8 +30,9 @@ const reducer = (state = initialState, { type, payload }) => {
         (channel) => channel.id === channel_id
       );
       return {
-        ...state,
+        ...state, 
         current_channel,
+        loading: false
       };
 
     default:

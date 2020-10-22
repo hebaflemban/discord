@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+
+import Loading from "./Loading"
 import { selectChannel, fetchMesseges } from "../redux/actions";
 import SearchBar from "./SearchBar";
 
@@ -29,6 +31,9 @@ const ChannelList = (props) => {
       <span>{chnl.owner}</span>
     </div>
   ));
+
+        if(props.loading) return <Loading />
+
   return (
     <div className="border border-warning m-5">
       <SearchBar onChange={setQeury} placeholder="Search for Channel" />
@@ -40,6 +45,7 @@ const ChannelList = (props) => {
 const mapStateToProps = ({ channelsReducer }) => {
   return {
     channels: channelsReducer.channels,
+    loading: channelsReducer.loading
     current_channel: channelsReducer.current_channel,
   };
 };
