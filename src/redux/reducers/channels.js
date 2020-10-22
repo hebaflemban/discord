@@ -12,7 +12,7 @@ const reducer = (state = initialState, { type, payload }) => {
       const channels = payload;
       return {
         channels: channels,
-        current_channel: state.current_channel,
+        current_channel: channels[0],
         loading: false
       };
 
@@ -26,7 +26,9 @@ const reducer = (state = initialState, { type, payload }) => {
 
     case SELECT_CHANNEL:
       const channel_id = payload;
-      const current_channel = state.channels.find(channel => channel.id === channel_id)
+      const current_channel = state.channels.find(
+        (channel) => channel.id === channel_id
+      );
       return {
         ...state, 
         current_channel,
