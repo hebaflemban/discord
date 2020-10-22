@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { selectChannel } from "../redux/actions";
+import { selectChannel, fetchMesseges } from "../redux/actions";
 import SearchBar from "./SearchBar";
 
 const ChannelList = (props) => {
@@ -16,6 +16,7 @@ const ChannelList = (props) => {
 
   const handleClick = (chnl) => {
     props.selectChannel(chnl.id);
+    props.fetchMesseges(chnl.id);
   };
 
   let chanelCards = filterChannels().map((chnl) => (
@@ -47,6 +48,7 @@ const mapStateToProps = ({ channelsReducer }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     selectChannel: (channel_id) => dispatch(selectChannel(channel_id)),
+    fetchMesseges: (channel_id) => dispatch(fetchMesseges(channel_id)),
   };
 };
 

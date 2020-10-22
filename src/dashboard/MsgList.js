@@ -11,6 +11,8 @@ const MsgList = (props) => {
   const id = props.channel.id;
   const msgs = props.msgs;
 
+  // props.fetchMesseges(id);
+
   useEffect(() => {
     const interval = setInterval(() => {
       props.fetchMesseges(id);

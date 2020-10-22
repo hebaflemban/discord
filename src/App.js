@@ -19,6 +19,7 @@ import Welcome from "./welcome/";
 
 function App({
   channels,
+  current_channel,
   messeges,
   addChannel,
   fetchChannels,
@@ -28,6 +29,8 @@ function App({
   // addChannel(" we love coded ");
   // ()=> send(830, "we see you");
   console.log("channel", channels);
+  console.log("current_channel", current_channel);
+
   console.log("messeges", messeges);
 
   return (
@@ -57,7 +60,8 @@ function App({
 
 const mapStateToProps = ({ user, channelsReducer, messeges }) => ({
   user,
-  channels:channelsReducer.channels,
+  channels: channelsReducer.channels,
+  current_channel: channelsReducer.current_channel,
   messeges,
 });
 const mapDispatchToProps = (dispatch) => {
