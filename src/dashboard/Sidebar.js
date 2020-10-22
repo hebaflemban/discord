@@ -16,6 +16,11 @@ function Sidebar({ user, addChannel, logout }) {
     setChnlName(new_chnl);
   };
 
+  const handleClick = (chnlName) => {
+    addChannel(chnlName);
+    setChnlName(" ");
+  };
+
   return (
     <div className="border border-danger">
       <h1>this is the side bar</h1>
@@ -30,7 +35,7 @@ function Sidebar({ user, addChannel, logout }) {
         className="btn btn-primary"
         type="button"
         value="submit"
-        onClick={() => addChannel(chnlName)}
+        onClick={() => handleClick(chnlName)}
       />
 
       <hr></hr>
