@@ -25,6 +25,7 @@ function Sidebar({ user, addChannel, logout }) {
         placeholder="Create New Channel"
         onChange={(e) => onChange(e.target.value)}
         value={chnlName}
+        
       />
       <input
         className="btn btn-primary"

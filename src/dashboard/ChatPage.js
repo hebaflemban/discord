@@ -9,7 +9,7 @@ function ChatPage(props) {
     <div className="border border-primary">
       <h1>{props.channel.name}</h1>
       <span>owner: {props.channel.owner}</span>
-      <MsgList></MsgList>
+      <MsgList x={props.channel.name}></MsgList>
     </div>
   );
 }

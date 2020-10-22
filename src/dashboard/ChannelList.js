@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchMesseges, selectChannel } from "../redux/actions";
 import SearchBar from "./SearchBar"
+import Loading from "./Loading"
 
 const ChannelList = (props) => {
   const [query, setQeury] = useState("");
-  const chanels = props.channels;
+  const [loading, setLoading] = useState(true);
+  let chanels = props.channels;
   // img_url, owner, name, id
 
   const filterChannels = () => {
@@ -16,6 +18,7 @@ const ChannelList = (props) => {
     });
   };
 
+  
 
   const handleClick = (chnl) => {
     console.log(chnl);
@@ -34,6 +37,14 @@ const ChannelList = (props) => {
       <span>{chnl.owner}</span>
     </div>
   ));
+
+
+  useEffect(()=> {
+    setLoading(false);
+  }, [...chanels])
+
+  if (!chanelCards) return <Loading/>
+
   return <div className="border border-warning m-5">
     <SearchBar onChange={setQeury} placeholder="Search for Channel"/>
     {chanelCards}
