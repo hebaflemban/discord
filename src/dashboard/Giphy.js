@@ -9,7 +9,7 @@ const Giphy = (props) => {
     }
     return (
         <div className="m-2">
-            <Picker onSelected={log.bind(this)} />
+            {/* <Picker onSelected={log.bind(this)} /> */}
         </div>
     );
 };

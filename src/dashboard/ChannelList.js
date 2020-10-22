@@ -16,7 +16,6 @@ const ChannelList = (props) => {
 
   const handleClick = (chnl) => {
     props.selectChannel(chnl.id);
-    props.fetchMesseges(chnl.id);
   };
 
   let chanelCards = filterChannels().map((chnl) => (

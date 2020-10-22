@@ -1,4 +1,5 @@
 import { SET_CHANNELS, ADD_CHANNEL, SELECT_CHANNEL } from "./actionTypes";
+import {fetchMesseges} from './index'
 import instance from "./instance";
 
 /* Channels
@@ -39,7 +40,12 @@ export const addChannel = (channelName) => async (dispatch) => {
 };
 
 // this one is to save the current channel ()
-export const selectChannel = (channel_id) => {
+let interval = null;
+export const selectChannel = (channel_id) => async (dispatch) => {
+  clearInterval(interval);
+  interval = setInterval(() => {
+    dispatch(fetchMesseges(channel_id))
+  }, 5000);
   return {
     type: SELECT_CHANNEL,
     payload: channel_id,

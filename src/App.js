@@ -28,11 +28,6 @@ function App({
 }) {
   // addChannel(" we love coded ");
   // ()=> send(830, "we see you");
-  console.log("channel", channels);
-  console.log("current_channel", current_channel);
-
-  console.log("messeges", messeges);
-
   return (
     <div id="app" className="container-fluid">
       <div className="row">
