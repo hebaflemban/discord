@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
-import SearchBar from "./SearchBar"
+import SearchBar from "./SearchBar";
 
 // components
 import Msg from "./Msg";
+import Loading from "./Loading"
 
 const MsgList = (props) => {
   const [query, setQeury] = useState("");
@@ -22,6 +23,8 @@ const MsgList = (props) => {
     <Msg key={msg.id} msg={msg}></Msg>
   ));
 
+  if(props.loading) return <Loading />
+
   return (
     <div className="border border-warning m-5">
       <SearchBar onChange={setQeury} placeholder="Search for Message"/>
@@ -33,7 +36,8 @@ const MsgList = (props) => {
 
 const mapStateToProps = (state) => ({
 
-  msgs: state.messeges
+  msgs: state.messeges,
+  loading: state.messeges.loading
 })
 
 
