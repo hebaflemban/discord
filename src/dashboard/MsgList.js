@@ -11,13 +11,22 @@ const MsgList = (props) => {
   const id = props.channel.id;
   const msgs = props.msgs;
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      props.fetchMesseges(id);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [props.channel.id]);
+  // props.fetchMesseges(id);
 
+  // useEffect(() => {
+  //   let interval
+  //   if (id) {
+  //   interval = setInterval(() => {
+  //     props.fetchMesseges(id);
+  //   }, 2000);
+  // }
+  //   return () => clearInterval(interval);
+  // }, [props.channel.id]);
+  useEffect(() => {
+    if (id) {
+      props.fetchMesseges(id)
+    }
+  }, [id])
   const filterMsgs = () => {
     return msgs.filter((msg) => {
       return `${msg.message}`.toLowerCase().includes(query.toLowerCase());
