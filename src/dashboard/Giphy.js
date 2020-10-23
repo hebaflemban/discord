@@ -1,17 +1,32 @@
 import React from "react";
 import Picker from 'react-giphy-picker'
+import { connect } from "react-redux";
+import { send } from "../redux/actions";
 
 
 const Giphy = (props) => {
 
-    const log = (gif) => {
+    const sendGif = (gif) => {
         console.log(gif.original.url)
+        let gifToSend = gif.original.url
+        props.send(props.channel.id, gifToSend)
     }
     return (
-        <div className="m-2">
-            {/* <Picker onSelected={log.bind(this)} /> */}
-        </div>
+        <Picker onSelected={sendGif.bind(this)} />
     );
 };
+const mapStatToProps = ({ channelsReducer }) => {
+    return {
+        channel: channelsReducer.current_channel,
+    };
+};
 
-export default Giphy;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        send: (chnl_id, gif) => {
+            dispatch(send(chnl_id, gif));
+        },
+    };
+};
+
+export default connect(mapStatToProps, mapDispatchToProps)(Giphy);

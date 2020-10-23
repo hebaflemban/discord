@@ -35,7 +35,7 @@ const MsgList = (props) => {
     });
   };
 
-  const msgList = filterMsgs().map((msg) => <Msg key={msg.id} msg={msg}></Msg>);
+  const msgList = filterMsgs().map((msg) => <Msg key={msg.id + msg.username} msg={msg}></Msg>);
 
   if(props.loading) return <Loading />
 

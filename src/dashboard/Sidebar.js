@@ -22,10 +22,6 @@ function Sidebar({ user, addChannel, logout }) {
   };
   return (
     <div className="border border-danger">
-      <img
-        src="https://www.dailydot.com/wp-content/uploads/2018/10/olli-the-polite-cat-800x400.jpg"
-        alt=""
-      />
       <h1>this is the side bar</h1>
       <input
         className=""
