@@ -8,16 +8,14 @@ function Send(props) {
   console.log("******************SEND IS RERENDED***************************");
   console.log(props.localStorage);
 
-  const draft = "" + props.localStorage;
-  // why wouldn't this work
-  const [msg, setMsg] = useState(
-    localStorage.getItem(`msgInLocalStorage_${props.channel.id}`)
-  );
+  let draft = "" + props.localStorage;
+
+  console.log(draft);
+  const [msg, setMsg] = useState("");
   console.log(msg);
 
   /*
-  let key = `msgInLocalStorage_${props.channel.id}`;
-  const drive = localStorage.getItem(key);
+  
   console.log("!!drive", !!drive, key);
 
   const [msg, setMsg] = useState(drive ? localStorage.getItem(key) : " ");
@@ -86,8 +84,7 @@ function Send(props) {
           onChange={(event) => handleChange(event)}
           onKeyDown={onEnter}
           placeholder={"Press Enter to send"}
-          // value={props.localStorage ? props.localStorage : msg}
-          value={props.localStorage}
+          value={msg == "" ? props.localStorage : msg}
         />
       </div>
       <div>

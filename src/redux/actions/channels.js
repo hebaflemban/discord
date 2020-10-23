@@ -54,10 +54,12 @@ export const selectChannel = (channel_id, localStorage) => async (dispatch) => {
   }, 5000);
 
   //cache
-  // Unhandled Rejection (ReferenceError): Cannot access 'localStorage' before initialization
-
   console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
   console.log("channel_id, localStorage", channel_id, localStorage);
+
+  // Unhandled Rejection (ReferenceError): Cannot access 'localStorage' before initialization
+  // why can't I call local storage from here
+
   // localStorage.setItem(`msgInLocalStorage_${channel_id}`, "heba");
   // const localStorage = localStorage.getItem(`msgInLocalStorage_${channel_id}`)
   //   ? localStorage.getItem(`msgInLocalStorage_${channel_id}`)
