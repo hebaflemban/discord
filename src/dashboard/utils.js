@@ -9,7 +9,7 @@ const processMsgs = (msg) => {
     const nowTime = new Date()
     const msgDate = new Date(msg.timestamp);
     let timeDelta = nowTime - msgDate;
-    if (msg.message.match(regexAlert) && (timeDelta < 2000)) {
+    if (msg.message.match(regexAlert) && (timeDelta < 5000)) {
         console.log("new alert")
         Swal.fire({
             icon: 'info',
