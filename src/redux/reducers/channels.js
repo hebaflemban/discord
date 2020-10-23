@@ -13,7 +13,7 @@ const reducer = (state = initialState, { type, payload }) => {
       const channels = payload;
       return {
         channels: channels,
-        current_channel: channels[0],
+        current_channel: state.current_channel,
         loading: false,
         localStorage: "",
       };
