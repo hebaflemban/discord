@@ -1,5 +1,10 @@
-import { SET_CHANNELS, ADD_CHANNEL, SELECT_CHANNEL } from "./actionTypes";
-import {fetchMesseges} from './index'
+import {
+  SET_CHANNELS,
+  ADD_CHANNEL,
+  SELECT_CHANNEL,
+  GET_DRAFTS,
+} from "./actionTypes";
+import { fetchMesseges } from "./index";
 import instance from "./instance";
 
 /* Channels
@@ -41,14 +46,29 @@ export const addChannel = (channelName) => async (dispatch) => {
 
 // this one is to save the current channel ()
 let interval = null;
-export const selectChannel = (channel_id) => async (dispatch) => {
+
+export const selectChannel = (channel_id, localStorage) => async (dispatch) => {
   clearInterval(interval);
   interval = setInterval(() => {
-    dispatch(fetchMesseges(channel_id))
+    dispatch(fetchMesseges(channel_id));
   }, 5000);
-  return {
-    type: SELECT_CHANNEL,
-    payload: channel_id,
-  };
 
+  //cache
+  console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+  console.log("channel_id, localStorage", channel_id, localStorage);
+
+  // Unhandled Rejection (ReferenceError): Cannot access 'localStorage' before initialization
+  // why can't I call local storage from here
+
+  // localStorage.setItem(`msgInLocalStorage_${channel_id}`, "heba");
+  // const localStorage = localStorage.getItem(`msgInLocalStorage_${channel_id}`)
+  //   ? localStorage.getItem(`msgInLocalStorage_${channel_id}`)
+  //   : " ";
+  // console.log(localStorage.getItem(`msgInLocalStorage_${channel_id}`));
+  // console.log(!!localStorage.getItem(`msgInLocalStorage_${channel_id}`));
+
+  dispatch({
+    type: SELECT_CHANNEL,
+    payload: { channel_id, localStorage },
+  });
 };

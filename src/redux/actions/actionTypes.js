@@ -14,3 +14,4 @@ export const ADD_CHANNEL = "ADD_CHANNEL";
 export const SET_MESSEGES = "SET_MESSEGES";
 export const UPDATE_MESSEGES = "UPDATE_MESSEGES";
 export const SEND = "SEND";
+export const GET_DRAFTS = "GET_DRAFTS";

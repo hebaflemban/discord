@@ -1,12 +1,13 @@
-
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import SearchBar from "./SearchBar";
+
+// actions
 import { fetchMesseges } from "../redux/actions";
 
 // components
 import Msg from "./Msg";
-import Loading from "./Loading"
+import Loading from "./Loading";
+import SearchBar from "./SearchBar";
 
 const MsgList = (props) => {
   const [query, setQeury] = useState("");
@@ -26,9 +27,9 @@ const MsgList = (props) => {
   // }, [props.channel.id]);
   useEffect(() => {
     if (id) {
-      props.fetchMesseges(id)
+      props.fetchMesseges(id);
     }
-  }, [id])
+  }, [id]);
   const filterMsgs = () => {
     return msgs.filter((msg) => {
       return `${msg.message}`.toLowerCase().includes(query.toLowerCase());
@@ -37,7 +38,7 @@ const MsgList = (props) => {
 
   const msgList = filterMsgs().map((msg) => <Msg key={msg.id} msg={msg}></Msg>);
 
-  if(props.loading) return <Loading />
+  if (props.loading) return <Loading />;
 
   return (
     <div className="border border-warning m-5">
@@ -48,12 +49,10 @@ const MsgList = (props) => {
   );
 };
 
-
 const mapStateToProps = ({ messeges, channelsReducer }) => ({
   msgs: messeges,
   channel: channelsReducer.current_channel,
-  loading: messeges.loading
-
+  loading: messeges.loading,
 });
 
 const mapDispatchToProps = (dispatch) => {

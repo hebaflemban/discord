@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import Loading from "./Loading"
+import Loading from "./Loading";
 import { selectChannel, fetchMesseges } from "../redux/actions";
 import SearchBar from "./SearchBar";
 
 const ChannelList = (props) => {
   const [query, setQeury] = useState("");
   const chanels = props.channels;
-  // img_url, owner, name, id
 
   const filterChannels = () => {
     return chanels.filter((chanel) => {
@@ -17,7 +16,8 @@ const ChannelList = (props) => {
   };
 
   const handleClick = (chnl) => {
-    props.selectChannel(chnl.id);
+    const draft = localStorage.getItem(`msgInLocalStorage_${chnl.id}`);
+    props.selectChannel(chnl.id, draft);
   };
 
   let chanelCards = filterChannels().map((chnl) => (
@@ -32,7 +32,7 @@ const ChannelList = (props) => {
     </div>
   ));
 
-        if(props.loading) return <Loading />
+  if (props.loading) return <Loading />;
 
   return (
     <div className="border border-warning m-5">
@@ -52,7 +52,8 @@ const mapStateToProps = ({ channelsReducer }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    selectChannel: (channel_id) => dispatch(selectChannel(channel_id)),
+    selectChannel: (channel_id, draft) =>
+      dispatch(selectChannel(channel_id, draft)),
     fetchMesseges: (channel_id) => dispatch(fetchMesseges(channel_id)),
   };
 };

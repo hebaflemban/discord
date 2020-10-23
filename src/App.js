@@ -26,8 +26,6 @@ function App({
   fetchMesseges,
   send,
 }) {
-  // addChannel(" we love coded ");
-  // ()=> send(830, "we see you");
   return (
     <div id="app" className="container-fluid">
       <div className="row">

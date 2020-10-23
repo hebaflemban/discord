@@ -5,31 +5,48 @@ import Picker from "emoji-picker-react";
 import Giphy from "./Giphy";
 
 function Send(props) {
-  console.log(
-    `msgInLocalStorage_${props.channel.id}`,
-    localStorage.getItem(`msgInLocalStorage_${props.channel.id}`)
-  );
+  console.log("******************SEND IS RERENDED***************************");
+  console.log(props.localStorage);
 
+  let draft = "" + props.localStorage;
+
+  console.log(draft);
   const [msg, setMsg] = useState("");
+  console.log(msg);
+
+  /*
+  
+  console.log("!!drive", !!drive, key);
+
+  const [msg, setMsg] = useState(drive ? localStorage.getItem(key) : " ");
+  console.log("msg", msg);
+
   useEffect(() => {
-    const draft = localStorage.getItem(`msgInLocalStorage_${props.channel.id}`);
-    if (draft) {
-      setMsg(msg);
-    }
-  }, []);
+    setMsg(drive ? localStorage.getItem(key) : " ");
+    console.log("inside useeffect", msg);
+  }, [props.channel.id]);
+
+  useEffect(() => {
+    console.log("inside useeffect using msg", msg);
+
+    localStorage.setItem(`msgInLocalStorage_${props.channel.id}`, msg);
+  }, [msg]);
+
+    */
+  const handleChange = (event) => {
+    setMsg(event.target.value);
+    localStorage.setItem(
+      `msgInLocalStorage_${props.channel.id}`,
+      event.target.value
+    );
+  };
+
   const [chosenEmoji, setChosenEmoji] = useState("😉");
   const onEmojiClick = (event, emojiObject) => {
     setChosenEmoji(emojiObject);
     setMsg(`${msg} ${emojiObject.emoji}`);
   };
 
-  useEffect(() => {
-    localStorage.setItem(`msgInLocalStorage_${props.channel.id}`, msg);
-  }, [msg]);
-
-  const onChange = (new_msg) => {
-    setMsg(new_msg);
-  };
   const onEnter = (e) => {
     if (e.key === "Enter") {
       console.log("**********************");
@@ -40,7 +57,8 @@ function Send(props) {
         // send api request to send the msg
         props.send(props.channel.id, msg);
         // clear input field after sending a msg
-        setMsg("");
+        setMsg(" ");
+        props.localStorage = " ";
       } catch (error) {
         console.log(error);
       }
@@ -63,9 +81,10 @@ function Send(props) {
         <input
           type="text"
           className="form-control"
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(event) => handleChange(event)}
           onKeyDown={onEnter}
-          value={msg}
+          placeholder={"Press Enter to send"}
+          value={msg == "" ? props.localStorage : msg}
         />
       </div>
       <div>
@@ -86,6 +105,7 @@ function Send(props) {
 const mapStatToProps = ({ channelsReducer }) => {
   return {
     channel: channelsReducer.current_channel,
+    localStorage: channelsReducer.localStorage,
   };
 };
 
