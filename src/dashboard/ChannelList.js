@@ -45,7 +45,7 @@ const ChannelList = (props) => {
 const mapStateToProps = ({ channelsReducer }) => {
   return {
     channels: channelsReducer.channels,
-    loading: channelsReducer.loading
+    loading: channelsReducer.loading,
     current_channel: channelsReducer.current_channel,
   };
 };
