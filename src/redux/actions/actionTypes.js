@@ -15,3 +15,4 @@ export const SET_MESSEGES = "SET_MESSEGES";
 export const UPDATE_MESSEGES = "UPDATE_MESSEGES";
 export const SEND = "SEND";
 export const GET_DRAFTS = "GET_DRAFTS";
+export const RESET_LOADING = "RESET_LOADING";

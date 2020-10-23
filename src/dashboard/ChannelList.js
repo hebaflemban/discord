@@ -32,7 +32,7 @@ const ChannelList = (props) => {
     </div>
   ));
 
-  if (props.loading) return <Loading />;
+  if (props.loadingChannels) return <Loading />;
 
   return (
     <div className="border border-warning m-5">
@@ -42,10 +42,11 @@ const ChannelList = (props) => {
   );
 };
 
-const mapStateToProps = ({ channelsReducer }) => {
+const mapStateToProps = ({ channelsReducer, messegesReducer }) => {
   return {
     channels: channelsReducer.channels,
-    loading: channelsReducer.loading,
+    loadingChannels: channelsReducer.loading,
+    loadingMessages: messegesReducer.loading,
     current_channel: channelsReducer.current_channel,
   };
 };

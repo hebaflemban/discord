@@ -12,6 +12,7 @@ export {
   LOGOUT,
   ERROR,
   RESET,
+  RESET_LOADING,
 } from "./actionTypes";
 
 /* Channels
@@ -28,7 +29,7 @@ Requires authentication.
 send: sends a message to a specific channel. Requires authentication
       Expects a payload like this: {message: <MESSAGE_TEXT>}
 */
-export { fetchMesseges, updateMesseges, send } from "./messeges";
+export { fetchMesseges, updateMesseges, send, resetLoading } from "./messeges";
 
 // Authentication
 export { login, logout, signup, isTokenValid, reset } from "./authentication";

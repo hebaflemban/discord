@@ -3,6 +3,7 @@ import {
   ADD_CHANNEL,
   SELECT_CHANNEL,
   GET_DRAFTS,
+  RESET_LOADING,
 } from "./actionTypes";
 import { fetchMesseges } from "./index";
 import instance from "./instance";
@@ -70,5 +71,8 @@ export const selectChannel = (channel_id, localStorage) => async (dispatch) => {
   dispatch({
     type: SELECT_CHANNEL,
     payload: { channel_id, localStorage },
+  });
+  dispatch({
+    type: RESET_LOADING,
   });
 };
