@@ -5,12 +5,13 @@ import Swal from 'sweetalert2'
 
 //action
 import { login } from "../redux/actions";
+import { reset } from "../redux/actions";
 
 //component
 // import ErrorAlert from "./ErrorAlert";
 import { ReactComponent as Logo } from '../logo.svg';
 
-const LoginForm = ({ login, user, error }) => {
+const LoginForm = ({ login, user, error, reset }) => {
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -25,13 +26,23 @@ const LoginForm = ({ login, user, error }) => {
     login(userData);
     // console.log(user);
   };
-  const errorAlert = (e) => {
+  const errorAlert = (error) => {
+    console.log(typeof(error));
+    let x = JSON.parse(error);
+    let errorMsg = x.non_field_errors[0]
+    console.log(typeof(x));
+    console.log(x.non_field_errors[0]);
+
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
       // text: 'Something went wrong!',
-      text: 'please check the username and password',
-    })
+      text: `
+      ${errorMsg}
+      `,
+    });
+    reset();
+
   }
 
   const { username, password } = userData;
@@ -82,7 +93,6 @@ const LoginForm = ({ login, user, error }) => {
                             onChange={handleChange} />
                         </div>
                         <button type="submit" className="btn btn-outline-login btn-round btn-block my-3">Login</button>
-                        <hr />
                       </form>
                     </div>
                     <hr />
@@ -102,6 +112,8 @@ const LoginForm = ({ login, user, error }) => {
     </div>
   );
 };
+
+
 const mapStateToProps = ({ authRes }) => ({
   user: authRes.user,
   error: authRes.errorMessage,
@@ -109,6 +121,7 @@ const mapStateToProps = ({ authRes }) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (user) => dispatch(login(user)),
+    reset: () => dispatch(reset()),
   };
 };
 
