@@ -27,22 +27,20 @@ function App({
   send,
 }) {
   return (
-    <div id="wrapper">
-      <Switch>
-        <Route path="/signup">
-          <Signup />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/dashboard">
-          <Dashborad />
-        </Route>
-        <Route path="/">
-          <Welcome />
-        </Route>
-      </Switch>
-    </div>
+    <Switch>
+      <Route path="/signup">
+        <Signup />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/dashboard">
+        <Dashborad />
+      </Route>
+      <Route path="/">
+        <Welcome />
+      </Route>
+    </Switch>
   );
 }
 

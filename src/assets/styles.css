@@ -11332,12 +11332,14 @@ a:focus {
     text-align: center;
     padding: 0 1rem;
     font-weight: 800;
-    font-size: 0.65rem;
+    font-size: 1rem;
 }
 
 @media (min-width: 768px) {
     .sidebar {
-        width: 14rem !important;
+        width: 24rem !important;
+        max-width: 24rem !important;
+        min-width: 24rem !important;
     }
 
     .sidebar .nav-item .collapse {
@@ -12230,8 +12232,10 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 
-/* ali did this */
-body {
+.auth-body {
+    width: 100%;
+    min-height: 100vh !important;
+
     /* opt 1 */
     /* background: #ee9ca7; */
     /* background: -webkit-linear-gradient(135deg, #ffdde1, #ee9ca7); */
@@ -12320,4 +12324,54 @@ body {
 .btn-outline-login:not(:disabled):not(.disabled).active:focus,
 .show>.btn-outline-signup.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.5);
+}
+
+/* background: #d9a7c7;
+background: -webkit-linear-gradient(to right, #ee9ca760, #d9a7c760);
+background: linear-gradient(to right, #ee9ca760, #d9a7c760);
+ */
+.bg-gradient-piggypink {
+    background-color: #d9a7c7;
+    background-image: linear-gradient(135deg, #ee9ca760, #d9a7c760);
+    background-size: cover;
+}
+
+#chatpage {
+    height: 75%;
+}
+
+.fix-me {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    height: 10%;
+    width: calc(100% - 24rem);
+}
+
+.scrollable {
+    height: 550px !important;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+/* The emerging W3C standard
+   that is currently Firefox-only */
+* {
+    scrollbar-width: 8px;
+    scrollbar-color: grey transparent;
+}
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: grey;
+    border-radius: 20px;
+    border: 3px solid transparent;
 }

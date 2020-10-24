@@ -1,59 +1,65 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-// action
 import { logout } from "../redux/actions";
 import { addChannel } from "../redux/actions";
-
-// components
-import Button from "react-bootstrap/Button";
+import { ReactComponent as Logo } from '../logo.svg';
 import ChannelList from "./ChannelList";
 
-function Sidebar({ user, addChannel, logout }) {
-  const [chnlName, setChnlName] = useState("");
+const Sidebar = ({ user, addChannel, logout }) => {
+    const [chnlName, setChnlName] = useState("");
 
-  const onChange = (new_chnl) => {
-    setChnlName(new_chnl);
-  };
+    const onChange = (new_chnl) => {
+        setChnlName(new_chnl);
+    };
 
-  const handleClick = () => {
-    addChannel(chnlName);
-    setChnlName("");
-  };
-  return (
-    <div className="border border-danger">
-      <h1>this is the side bar</h1>
-      <input
-        className=""
-        type="text"
-        placeholder="Create New Channel"
-        onChange={(e) => onChange(e.target.value)}
-        value={chnlName}
-      />
-      <input
-        className="btn btn-primary"
-        type="button"
-        value="submit"
-        onClick={() => handleClick()}
-      />
+    const handleClick = () => {
+        addChannel(chnlName);
+        setChnlName("");
+    };
 
-      <hr></hr>
-      <Button variant="danger" onClick={logout}>
-        Log out
-      </Button>
-      <ChannelList></ChannelList>
-    </div>
-  );
+    return (
+        <ul className="navbar-nav bg-gradient-piggypink sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div className="sidebar-brand-icon">
+                    {/* <Logo className="w-50 img-fluid"/> */}
+                </div>
+                <div className="sidebar-brand-text ">Discord <sup>2</sup></div>
+            </a>
+            <hr className="sidebar-divider my-4" />
+            <li className="nav-item mx-3">
+                <button className="btn btn-block btn-outline-light btn-round">
+                    <i className="fas fa-fw fa-chart-area"></i>
+                    <span>DASHBOARD</span></button>
+            </li>
+            <hr className="sidebar-divider my-2" />
+            <li className="nav-item mx-3">
+                <button onClick={logout} className="btn btn-block btn-outline-danger btn-round">
+                    <i className="fas fa-fw fa-chart-area"></i>
+                    <span>LOGOUT</span></button>
+            </li>
+            <hr className="sidebar-divider my-3" />
+            <li className="nav-item mx-3">
+                <input type="text" onChange={(e) => onChange(e.target.value)} className="form-control bg-light border-0 small" placeholder="new channel name..." value={chnlName} />
+                <button value="submit" onClick={() => handleClick()} className="btn btn-block btn-outline-light btn-round">
+                    <i className="fas fa-fw fa-chart-area"></i>
+                    <span>create new channel</span>
+                </button>
+            </li>
+            <hr className="sidebar-divider my-3" />
+            <ChannelList />
+        </ul>
+    );
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    addChannel: (val) => dispatch(addChannel(val)),
-    logout: () => dispatch(logout()),
-  };
+    return {
+        addChannel: (val) => dispatch(addChannel(val)),
+        logout: () => dispatch(logout()),
+    };
 };
 
 const mapStateToProps = ({ authRes }) => ({
-  user: authRes.user,
+    user: authRes.user,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

@@ -25,11 +25,8 @@ const Msg = ({ msg, usersInChannel }) => {
     msgBody = <img src={msg.message} alt="" />;
   } else if (msg.message.match(urlRegex)) {
     if (msg.message.match(urlRegex)) {
-      msgBody = (
-        <a href={msg.message} target="_blank">
-          {msg.message}
-        </a>
-      );
+      msgBody = <a href={msg.message} target="_blank" rel="noopener noreferrer">{msg.message}</a>
+
     }
   } else {
     msgBody = <p>{msg.message}</p>;

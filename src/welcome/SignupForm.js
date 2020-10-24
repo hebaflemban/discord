@@ -67,6 +67,7 @@ const SignupForm = ({ signup, user, error, reset }) => {
     errorAlert(error)
   }
   return (
+
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-xl-10 col-lg-12 col-md-9">
@@ -125,7 +126,8 @@ onChange={handleChange}
             <Link to="/login" className="btn btn-link my-2 my-sm-0">
               I already have an account
             </Link>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
       </div>

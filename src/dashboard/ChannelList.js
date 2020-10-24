@@ -35,7 +35,11 @@ const ChannelList = (props) => {
   if (props.loadingChannels) return <Loading />;
 
   return (
-    <div className="border border-warning m-5">
+    <div className="scrollable">
+      <hr className="sidebar-divider my-3" />
+      <div className="sidebar-heading text-white">
+        channels
+      </div>
       <SearchBar onChange={setQeury} placeholder="Search for Channel" />
       {chanelCards}
     </div>

@@ -47,7 +47,49 @@ function Send(props) {
   };
 
   return (
-    <div className="container border border-info py-5">
+    <div className="input-group input-group-lg">
+      <div className="input-group-append">
+        <span
+          className="input-group-text"
+          id="inputGroup-sizing-lg"
+          onClick={onEnter}>
+          SEND
+          </span>
+      </div>
+      <input
+        type="text"
+        className="form-control"
+        onChange={(event) => handleChange(event)}
+        onKeyDown={onEnter}
+        placeholder={"Press Enter to send"}
+        value={msg == "" ? props.localStorage : msg}
+      />
+    </div>
+  );
+}
+
+const mapStatToProps = ({ channelsReducer }) => {
+  return {
+    channel: channelsReducer.current_channel,
+    localStorage: channelsReducer.localStorage,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    send: (chnl_id, val) => {
+      dispatch(send(chnl_id, val));
+    },
+  };
+};
+
+export default connect(mapStatToProps, mapDispatchToProps)(Send);
+
+
+
+/*
+
+<div className="container border border-info py-5">
       <h1>this is the send bar</h1>
       <div className="input-group input-group-lg">
         <div className="input-group-apend">
@@ -76,26 +118,8 @@ function Send(props) {
             <span>No emoji Chosen</span>
           )}
           <Picker onEmojiClick={onEmojiClick} />
-          {/* <Giphy /> */}
+<Giphy />
+          </div>
+          </div>
         </div>
-      </div>
-    </div>
-  );
-}
-
-const mapStatToProps = ({ channelsReducer }) => {
-  return {
-    channel: channelsReducer.current_channel,
-    localStorage: channelsReducer.localStorage,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    send: (chnl_id, val) => {
-      dispatch(send(chnl_id, val));
-    },
-  };
-};
-
-export default connect(mapStatToProps, mapDispatchToProps)(Send);
+*/
