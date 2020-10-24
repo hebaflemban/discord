@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import Swal from 'sweetalert2'
 
 //action
 import { login } from "../redux/actions";
 
 //component
-import ErrorAlert from "./ErrorAlert";
+// import ErrorAlert from "./ErrorAlert";
+import { ReactComponent as Logo } from '../logo.svg';
 
 const LoginForm = ({ login, user, error }) => {
   const [userData, setUserData] = useState({
@@ -18,11 +20,19 @@ const LoginForm = ({ login, user, error }) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
 
   const handleSubmit = (event) => {
-    console.log("testtttttt");
+    // console.log("testtttttt");
     event.preventDefault();
     login(userData);
-    console.log(user);
+    // console.log(user);
   };
+  const errorAlert = (e) => {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      // text: 'Something went wrong!',
+      text: 'please check the username and password',
+    })
+  }
 
   const { username, password } = userData;
 
@@ -31,46 +41,62 @@ const LoginForm = ({ login, user, error }) => {
   }
 
   if (error) {
-    return <ErrorAlert />;
+    errorAlert(error)
   }
 
   return (
-    <div className="col-6 mx-auto">
-      <div className="card my-5">
-        <div className="card-body">
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <input
-                type="text"
-                className="form-control"
-                id="username"
-                value={username}
-                name="username"
-                placeholder="Username"
-                onChange={handleChange}
-              />
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-xl-10 col-lg-12 col-md-9">
+          <div className="card o-hidden border-0 shadow-lg my-5">
+            <div className="card-body p-0">
+              <div className="row">
+                {/* image - you can cahnge the image from the css */}
+                <div className="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                <div className="col-lg-6">
+                  <div className="p-5">
+                    <div className="text-center">
+                      <Logo className="img-fluid mx-4 my-4 " />
+                      <h2 className="h2 text-gray-900 mb-4">Welcome back, buddy!</h2>
+                    </div>
+                    <hr />
+                    <div className="text-center">
+                      {/* form  */}
+                      <form onSubmit={handleSubmit} className="user">
+                        <div className="form-group">
+                          <input className="form-control form-control-user"
+                            type="text"
+                            id="username"
+                            value={username}
+                            name="username"
+                            placeholder="Username" required="required"
+                            onChange={handleChange} />
+                        </div>
+                        <div className="form-group">
+                          <input className="form-control form-control-user"
+                            type="password"
+                            id="password"
+                            value={password}
+                            name="password"
+                            placeholder="Password" required="required"
+                            onChange={handleChange} />
+                        </div>
+                        <button type="submit" className="btn btn-outline-login btn-round btn-block my-3">Login</button>
+                        <hr />
+                      </form>
+                    </div>
+                    <hr />
+                    <div className="text-center">
+                      <p>Dont hava an account ? join us for free!</p>
+                      <Link className="text-decoration-none" to={"/signup"}>
+                        <button className="btn btn-outline-signup btn-round btn-block my-3">Signup</button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                value={password}
-                name="password"
-                placeholder="Password"
-                onChange={handleChange}
-              />
-            </div>
-
-            <button type="submit" className="btn btn-primary">
-              Login
-            </button>
-            <Link to="/signup" className="btn btn-link my-2 my-sm-0">
-              Signup for an account
-            </Link>
-          </form>
+          </div>
         </div>
       </div>
     </div>

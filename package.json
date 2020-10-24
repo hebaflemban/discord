@@ -22,6 +22,7 @@
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "sweetalert2": "^10.8.1",
     "thunk": "^0.0.1"
   },
   "scripts": {
