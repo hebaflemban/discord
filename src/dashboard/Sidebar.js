@@ -27,22 +27,22 @@ const Sidebar = ({ user, addChannel, logout }) => {
                 <div className="sidebar-brand-text ">Discord <sup>2</sup></div>
             </a>
             <hr className="sidebar-divider my-4" />
-            <li class="nav-item mx-3">
-                <button class="btn btn-block btn-outline-light btn-round">
-                    <i class="fas fa-fw fa-chart-area"></i>
+            <li className="nav-item mx-3">
+                <button className="btn btn-block btn-outline-light btn-round">
+                    <i className="fas fa-fw fa-chart-area"></i>
                     <span>DASHBOARD</span></button>
             </li>
             <hr className="sidebar-divider my-2" />
-            <li class="nav-item mx-3">
-                <button onClick={logout} class="btn btn-block btn-outline-danger btn-round">
-                    <i class="fas fa-fw fa-chart-area"></i>
+            <li className="nav-item mx-3">
+                <button onClick={logout} className="btn btn-block btn-outline-danger btn-round">
+                    <i className="fas fa-fw fa-chart-area"></i>
                     <span>LOGOUT</span></button>
             </li>
             <hr className="sidebar-divider my-3" />
-            <li class="nav-item mx-3">
-                <input type="text" onChange={(e) => onChange(e.target.value)} class="form-control bg-light border-0 small" placeholder="new channel name..." value={chnlName} />
-                <button value="submit" onClick={() => handleClick()} class="btn btn-block btn-outline-light btn-round">
-                    <i class="fas fa-fw fa-chart-area"></i>
+            <li className="nav-item mx-3">
+                <input type="text" onChange={(e) => onChange(e.target.value)} className="form-control bg-light border-0 small" placeholder="new channel name..." value={chnlName} />
+                <button value="submit" onClick={() => handleClick()} className="btn btn-block btn-outline-light btn-round">
+                    <i className="fas fa-fw fa-chart-area"></i>
                     <span>create new channel</span>
                 </button>
             </li>

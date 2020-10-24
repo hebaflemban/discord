@@ -37,7 +37,7 @@ const ChannelList = (props) => {
   return (
     <div className="scrollable">
       <hr className="sidebar-divider my-3" />
-      <div class="sidebar-heading text-white">
+      <div className="sidebar-heading text-white">
         channels
       </div>
       <SearchBar onChange={setQeury} placeholder="Search for Channel" />
