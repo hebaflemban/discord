@@ -2,30 +2,37 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 // actions
-import { fetchMesseges } from "../redux/actions";
 
 // components
 import Msg from "./Msg";
 import Loading from "./Loading";
 import SearchBar from "./SearchBar";
 
-const MsgList = (props) => {
+const MsgList = ({ msgs }) => {
   const [query, setQeury] = useState("");
-  const msgs = props.msgs;
 
-  // useEffect(() => {
-  //   if (id) {
-  //     props.fetchMesseges(id);
-  //   }
-  // }, [id]);
   const filterMsgs = () => {
     return msgs.filter((msg) => {
       return `${msg.message}`.toLowerCase().includes(query.toLowerCase());
     });
   };
-
+  /**************** New Code ****************** */
+  let usersInChannel = filterMsgs().map((msg) => msg.username);
+  console.log(usersInChannel);
+  usersInChannel = [...new Set(usersInChannel)];
+  let icons = usersInChannel.map(
+    (user) => `profile_${usersInChannel.indexOf(user)}`
+  );
+  console.log(icons);
+  console.log(map);
+  let map = new Map(usersInChannel);
+  /********************************** */
   const msgList = filterMsgs().map((msg) => (
-    <Msg key={msg.id + msg.username} msg={msg}></Msg>
+    <Msg
+      key={msg.id + msg.username}
+      msg={msg}
+      usersInChannel={usersInChannel}
+    ></Msg>
   ));
 
   if (msgs.length === 0) return <Loading />;
@@ -41,14 +48,6 @@ const MsgList = (props) => {
 
 const mapStateToProps = ({ messegesReducer, channelsReducer }) => ({
   msgs: messegesReducer.messeges,
-  channel: channelsReducer.current_channel,
-  loading: messegesReducer.loading,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchMesseges: (channel_id) => dispatch(fetchMesseges(channel_id)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MsgList);
+export default connect(mapStateToProps)(MsgList);
