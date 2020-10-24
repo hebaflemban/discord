@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { send } from "../redux/actions";
 import Picker from "emoji-picker-react";
-// import Giphy from "./Giphy";
+ import Giphy from "./Giphy";
+ import Dropdown from 'react-bootstrap/Dropdown'
 
 function Send(props) {
   console.log("******************SEND IS RERENDED***************************");
@@ -55,6 +56,30 @@ function Send(props) {
           onClick={onEnter}>
           SEND
           </span>
+
+          <Dropdown>
+  <Dropdown.Toggle variant="success" id="dropdown-basic">
+  😀
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+  <Picker onEmojiClick={onEmojiClick} />
+    
+  </Dropdown.Menu>
+</Dropdown>
+
+<Dropdown>
+  <Dropdown.Toggle variant="success" id="dropdown-basic">
+  GIFs
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+  <Giphy/>
+    
+  </Dropdown.Menu>
+</Dropdown>
+
+
       </div>
       <input
         type="text"
