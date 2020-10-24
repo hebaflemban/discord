@@ -23,6 +23,7 @@ const LoginForm = ({ login, user, error, reset }) => {
     event.preventDefault();
     login(userData);
   };
+  
   const errorAlert = (error) => {
     console.log(typeof error);
     let x = JSON.parse(error);
