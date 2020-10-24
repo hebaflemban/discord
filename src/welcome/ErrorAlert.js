@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 //action
 import { reset } from "../redux/actions";
@@ -27,11 +27,7 @@ function ErrorAlert({ reset, error }) {
           <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
           <p>{error}</p>
         </Alert>
-        <Button variant="warning" onClick={() => handleClose()}>
-          <Link to to="/">
-            Home
-          </Link>
-        </Button>
+        <Button variant="warning" onClick={() => handleClose()}></Button>
       </>
     );
   }
