@@ -48,10 +48,11 @@ export const addChannel = (channelName) => async (dispatch) => {
 let interval = null;
 
 export const selectChannel = (channel_id, localStorage) => async (dispatch) => {
-  clearInterval(interval);
-  interval = setInterval(() => {
-    dispatch(fetchMesseges(channel_id));
-  }, 5000);
+  // clearInterval(interval);
+  // interval = setInterval(() => {
+  //   dispatch(fetchMesseges(channel_id));
+  // }, 5000);
+  dispatch(fetchMesseges(channel_id));
 
   //cache
   console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");

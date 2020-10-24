@@ -1,23 +1,38 @@
-import React from 'react';
-import processMsgs from "./utils"
-const Msg = ({ msg }) => {
+import React from "react";
+import processMsgs from "./utils";
+
+/*
+id(pin):12603
+username(pin):"maha"
+message(pin):"Hi"
+timestamp(pin):"2020-10-21T13:28:09.832676Z"
+channel(pin):855
+*/
+
+const Msg = ({ msg, usersInChannel }) => {
+  /**************** New Code ****************** */
+  console.log(usersInChannel);
+
+  /********************************** */
 
   const urlRegex = /[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)?/gi;
   // const urlRegex = new RegExp('/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi')
   const imgRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/gi;
-  let msgBody
+  let msgBody;
   processMsgs(msg);
   if (msg.message.match(imgRegex)) {
     // msgBody = <a href={msg.message} target="_blank">{msg.message}</a>
-    msgBody = <img src={msg.message} alt="" />
-  }
-  else if (msg.message.match(urlRegex)) {
+    msgBody = <img src={msg.message} alt="" />;
+  } else if (msg.message.match(urlRegex)) {
     if (msg.message.match(urlRegex)) {
-      msgBody = <a href={msg.message} target="_blank">{msg.message}</a>
+      msgBody = (
+        <a href={msg.message} target="_blank">
+          {msg.message}
+        </a>
+      );
     }
-  }
-  else {
-    msgBody = <p>{msg.message}</p>
+  } else {
+    msgBody = <p>{msg.message}</p>;
   }
 
   // chanel_id, id, msg, timestamp, username
@@ -34,6 +49,6 @@ const Msg = ({ msg }) => {
       </div>
     </div>
   );
-}
+};
 
 export default Msg;
