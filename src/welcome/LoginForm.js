@@ -26,6 +26,7 @@ const LoginForm = ({ login, user, error, reset }) => {
     login(userData);
     // console.log(user);
   };
+  
   const errorAlert = (error) => {
     console.log(typeof(error));
     let x = JSON.parse(error);
