@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 //action
 import { signup } from "../redux/actions";
@@ -9,7 +9,7 @@ import { reset } from "../redux/actions";
 
 //component
 //import ErrorAlert from "./ErrorAlert";
-import { ReactComponent as Logo } from '../logo.svg';
+import { ReactComponent as Logo } from "../logo.svg";
 
 const SignupForm = ({ signup, user, error, reset }) => {
   const [userData, setUserData] = useState({
@@ -21,53 +21,50 @@ const SignupForm = ({ signup, user, error, reset }) => {
   const handleChange = (event) =>
     setUserData({ ...userData, [event.target.name]: event.target.value });
 
-    const handleSubmit = (event) => {
-      if (userData.password === userData.checkPassword) {
-        event.preventDefault();
-        signup(userData);
-      }
-      else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'doube check the password dum dum!',
-          
-        });
-      }
+  const handleSubmit = (event) => {
+    if (userData.password === userData.checkPassword) {
+      event.preventDefault();
+      signup(userData);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "doube check the password dum dum!",
+      });
     }
+  };
   const errorAlert = (error) => {
-    console.log(typeof(error));
+    console.log(typeof error);
     let x = JSON.parse(error);
-    let errorMsg = x.username
+    let errorMsg = x.username;
     console.log(x);
     //console.log(x.non_field_errors[0]);
 
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
+      icon: "error",
+      title: "Oops...",
       text: `
       ${errorMsg}
       `,
     });
     reset();
-  }
+  };
 
   const { username, confirm_password, password } = userData;
-  
+
   if (user) {
     Swal.fire({
-      icon: 'success',
-      title: 'You have sign us successfuly',
+      icon: "success",
+      title: "You have sign us successfuly",
       showConfirmButton: true,
-      timer: 5000
-    })
+      timer: 5000,
+    });
     return <Redirect to="/dashboard" />;
   }
   if (error) {
-    errorAlert(error)
+    errorAlert(error);
   }
   return (
-
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-xl-10 col-lg-12 col-md-9">
@@ -85,56 +82,60 @@ const SignupForm = ({ signup, user, error, reset }) => {
                     <hr />
                     <div className="text-center">
                       {/* form  */}
-          <form onSubmit={handleSubmit} className="user">
-
+                      <form onSubmit={handleSubmit} className="user">
                         <div className="form-group">
-                          <input className="form-control form-control-user"
-
-type="text"
-id="username"
-value={username}
-name="username"
-placeholder="Username" required="required"
-onChange={handleChange}
-/>
+                          <input
+                            className="form-control form-control-user"
+                            type="text"
+                            id="username"
+                            value={username}
+                            name="username"
+                            placeholder="Username"
+                            required="required"
+                            onChange={handleChange}
+                          />
                         </div>
-                         
+
                         <div className="form-group">
-                          <input className="form-control form-control-user"
+                          <input
+                            className="form-control form-control-user"
                             type="password"
                             id="password"
                             value={password}
                             name="password"
-                            placeholder="Password" required="required"
-                            onChange={handleChange} />
+                            placeholder="Password"
+                            required="required"
+                            onChange={handleChange}
+                          />
                         </div>
 
                         <div className="form-group">
-                          <input className="form-control form-control-user"
-                             type="password"
-                             id="confirm_password"
-                             value={confirm_password}
-                             name="confirm_password"
-                             placeholder="Confirm Password" required="required"
-                            onChange={handleChange} />
+                          <input
+                            className="form-control form-control-user"
+                            type="password"
+                            id="confirm_password"
+                            value={confirm_password}
+                            name="confirm_password"
+                            placeholder="Confirm Password"
+                            required="required"
+                            onChange={handleChange}
+                          />
                         </div>
 
-
                         <button className="btn btn-outline-signup btn-round btn-block my-3">
-                        Signup
+                          Signup
                         </button>
-            <Link to="/login" className="btn btn-link my-2 my-sm-0">
-              I already have an account
-            </Link>
-            </form>
+                        <Link to="/login" className="btn btn-link my-2 my-sm-0">
+                          I already have an account
+                        </Link>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
       </div>
     </div>
   );

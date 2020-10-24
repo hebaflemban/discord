@@ -20,18 +20,18 @@ const MsgList = ({ msgs }) => {
   let usersInChannel = filterMsgs().map((msg) => msg.username);
   console.log(usersInChannel);
   usersInChannel = [...new Set(usersInChannel)];
-  let icons = usersInChannel.map(
-    (user) => `profile_${usersInChannel.indexOf(user)}`
-  );
-  console.log(icons);
-  console.log(map);
-  let map = new Map(usersInChannel);
+  // let icons = usersInChannel.map(
+  //   (user) => `profile_${usersInChannel.indexOf(user)}`
+  // );
+  // console.log(icons);
+  // let map = new Map(usersInChannel);
   /********************************** */
   const msgList = filterMsgs().map((msg) => (
     <Msg
       key={msg.id + msg.username}
       msg={msg}
       usersInChannel={usersInChannel}
+      userImg={`profile_${usersInChannel.indexOf(msg.username)}`}
     ></Msg>
   ));
 
