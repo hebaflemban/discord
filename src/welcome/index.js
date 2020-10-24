@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { ReactComponent as Logo } from '../logo.svg';
+
+//components
+import { ReactComponent as Logo } from "../logo.svg";
 
 // due to the complexity of the dashboard
 // this file is to be the base file of the dashboard so other file can fit in one place only

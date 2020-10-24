@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { send } from "../redux/actions";
 import Picker from "emoji-picker-react";
-import Giphy from "./Giphy";
+// import Giphy from "./Giphy";
 
 function Send(props) {
   console.log("******************SEND IS RERENDED***************************");
@@ -14,25 +14,6 @@ function Send(props) {
   const [msg, setMsg] = useState("");
   console.log(msg);
 
-  /*
-  
-  console.log("!!drive", !!drive, key);
-
-  const [msg, setMsg] = useState(drive ? localStorage.getItem(key) : " ");
-  console.log("msg", msg);
-
-  useEffect(() => {
-    setMsg(drive ? localStorage.getItem(key) : " ");
-    console.log("inside useeffect", msg);
-  }, [props.channel.id]);
-
-  useEffect(() => {
-    console.log("inside useeffect using msg", msg);
-
-    localStorage.setItem(`msgInLocalStorage_${props.channel.id}`, msg);
-  }, [msg]);
-
-    */
   const handleChange = (event) => {
     setMsg(event.target.value);
     localStorage.setItem(
@@ -126,7 +107,7 @@ export default connect(mapStatToProps, mapDispatchToProps)(Send);
           onChange={(event) => handleChange(event)}
           onKeyDown={onEnter}
           placeholder={"Press Enter to send"}
-          value={msg == "" ? props.localStorage : msg}
+          value={msg === "" ? props.localStorage : msg}
         />
       </div>
       <div>

@@ -2,7 +2,6 @@ import {
   SET_MESSEGES,
   UPDATE_MESSEGES,
   SEND,
-  RESET,
   RESET_LOADING,
 } from "./actionTypes";
 import instance from "./instance";
