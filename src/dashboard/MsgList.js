@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 // actions
@@ -11,25 +11,13 @@ import SearchBar from "./SearchBar";
 
 const MsgList = (props) => {
   const [query, setQeury] = useState("");
-  const id = props.channel.id;
   const msgs = props.msgs;
 
-  // props.fetchMesseges(id);
-
   // useEffect(() => {
-  //   let interval
   //   if (id) {
-  //   interval = setInterval(() => {
   //     props.fetchMesseges(id);
-  //   }, 2000);
-  // }
-  //   return () => clearInterval(interval);
-  // }, [props.channel.id]);
-  useEffect(() => {
-    if (id) {
-      props.fetchMesseges(id);
-    }
-  }, [id]);
+  //   }
+  // }, [id]);
   const filterMsgs = () => {
     return msgs.filter((msg) => {
       return `${msg.message}`.toLowerCase().includes(query.toLowerCase());
@@ -40,7 +28,7 @@ const MsgList = (props) => {
     <Msg key={msg.id + msg.username} msg={msg}></Msg>
   ));
 
-  if (props.loading) return <Loading />;
+  if (msgs.length === 0) return <Loading />;
 
   return (
     <div className="border border-warning m-5">

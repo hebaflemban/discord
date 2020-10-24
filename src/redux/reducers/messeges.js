@@ -1,4 +1,4 @@
-import { SET_MESSEGES, UPDATE_MESSEGES, SEND, RESET } from "../actions";
+import { SET_MESSEGES, UPDATE_MESSEGES, SEND, RESET_LOADING } from "../actions";
 
 const initialState = {
   messeges: [],
@@ -26,9 +26,9 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         messeges: [...state.messeges, newMessege],
       };
-    case RESET:
+    case RESET_LOADING:
       return {
-        ...state,
+        messeges: [],
         laoding: true,
       };
 
