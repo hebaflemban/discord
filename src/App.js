@@ -27,26 +27,21 @@ function App({
   send,
 }) {
   return (
-    <div id="app" className="container-fluid">
-      <div className="row">
-        <div className="col-auto"></div>
-        <div className="content col-10">
-          <Switch>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/dashboard">
-              <Dashborad />
-            </Route>
-            <Route path="/">
-              <Welcome />
-            </Route>
-          </Switch>
-        </div>
-      </div>
+    <div id="wrapper">
+      <Switch>
+        <Route path="/signup">
+          <Signup />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/dashboard">
+          <Dashborad />
+        </Route>
+        <Route path="/">
+          <Welcome />
+        </Route>
+      </Switch>
     </div>
   );
 }
