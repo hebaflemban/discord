@@ -36,7 +36,9 @@ const MsgList = (props) => {
     });
   };
 
-  const msgList = filterMsgs().map((msg) => <Msg key={msg.id + msg.username} msg={msg}></Msg>);
+  const msgList = filterMsgs().map((msg) => (
+    <Msg key={msg.id + msg.username} msg={msg}></Msg>
+  ));
 
   if (props.loading) return <Loading />;
 
@@ -49,10 +51,10 @@ const MsgList = (props) => {
   );
 };
 
-const mapStateToProps = ({ messeges, channelsReducer }) => ({
-  msgs: messeges,
+const mapStateToProps = ({ messegesReducer, channelsReducer }) => ({
+  msgs: messegesReducer.messeges,
   channel: channelsReducer.current_channel,
-  loading: messeges.loading,
+  loading: messegesReducer.loading,
 });
 
 const mapDispatchToProps = (dispatch) => {

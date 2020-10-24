@@ -95,7 +95,7 @@ function Send(props) {
             <span>No emoji Chosen</span>
           )}
           <Picker onEmojiClick={onEmojiClick} />
-          <Giphy />
+          {/* <Giphy /> */}
         </div>
       </div>
     </div>

@@ -1,4 +1,10 @@
-import { SET_MESSEGES, UPDATE_MESSEGES, SEND } from "./actionTypes";
+import {
+  SET_MESSEGES,
+  UPDATE_MESSEGES,
+  SEND,
+  RESET,
+  RESET_LOADING,
+} from "./actionTypes";
 import instance from "./instance";
 
 /* Messeges
@@ -56,4 +62,10 @@ export const send = (CHANNEL_ID, message) => async (dispatch) => {
     console.error(error.response.data);
     console.log("Messege couldn't be posted");
   }
+};
+
+export const resetLoading = () => {
+  return {
+    type: RESET_LOADING,
+  };
 };
