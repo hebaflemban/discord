@@ -1,6 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const Navbar = ({ onChange }) => {
+const Navbar = ({ onChange, user }) => {
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
       <div className="input-group">
@@ -32,7 +33,7 @@ const Navbar = ({ onChange }) => {
             aria-expanded="false"
           >
             <span className="mr-2 d-none d-lg-inline text-gray-600 small">
-              Valerie Luna
+              {user.username}
             </span>
             <img
               className="img-profile rounded-circle"
@@ -72,4 +73,8 @@ const Navbar = ({ onChange }) => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = ({ authRes }) => ({
+  user: authRes.user,
+});
+
+export default connect(mapStateToProps)(Navbar);

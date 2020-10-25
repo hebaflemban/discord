@@ -4,17 +4,17 @@ import Swal from "sweetalert2";
 // CommonJS
 // const Swal = require('sweetalert2')
 
-const processMsgs = (msg, timestamp) => {
+const processMsgs = (msg) => {
   const regexAlert = /!/gu;
   const nowTime = new Date();
-  const msgDate = new Date(timestamp);
+  const msgDate = new Date(msg.timestamp);
   let timeDelta = nowTime - msgDate;
-  if (msg.match(regexAlert) && timeDelta < 5000) {
+  if (msg.message.match(regexAlert) && timeDelta < 5000) {
     console.log("new alert");
     Swal.fire({
       icon: "info",
       title: "ALERT!",
-      text: `${msg}`,
+      text: `${msg.message}`,
     });
   }
 };

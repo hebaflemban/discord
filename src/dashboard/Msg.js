@@ -11,39 +11,33 @@ channel(pin):855
 */
 
 const Msg = ({ msgObj, userImg, user }) => {
-  // const urlRegex = /[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)?/gi;
-  // // // const urlRegex = new RegExp('/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi')
-  // const imgRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/gi;
-  // let msgBody;
-  // console.log(msgObj.message);
-  // const msgBubble = msgObj.message.map((msg) => {
-  //   console.log("inside map", msg);
+  const urlRegex = /[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)?/gi;
+  // // const urlRegex = new RegExp('/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi')
+  const imgRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/gi;
+  let msgBody;
 
-  //   processMsgs(msg, msgObj.timestamp[msgObj.message.indexOf(msg)]);
-  //   if (msg.match(imgRegex)) {
-  //     // msgBody = <a href={msg.message} target="_blank">{msg.message}</a>
-  //     msgBody = <img src={msg} alt="" />;
-  //   } else if (msg.match(urlRegex)) {
-  //     if (msg.match(urlRegex)) {
-  //       msgBody = (
-  //         <a
-  //           className="img-In-chat"
-  //           href={msg}
-  //           target="_blank"
-  //           rel="noopener noreferrer"
-  //         >
-  //           {msg}
-  //         </a>
-  //       );
-  //     }
-  //   } else {
-  //     msgBody = <p>{msg}</p>;
-  //   }
-  //   console.log("inside map msgBody[0]", msgBody);
-  // });
+  processMsgs(msgObj);
+  if (msgObj.message.match(imgRegex)) {
+    // msgBody = <a href={msg.message} target="_blank">{msg.message}</a>
+    msgBody = <img src={msgObj.message} alt="" />;
+  } else if (msgObj.message.match(urlRegex)) {
+    if (msgObj.message.match(urlRegex)) {
+      msgBody = (
+        <a
+          className="img-In-chat"
+          href={msgObj.message}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {msgObj.message}
+        </a>
+      );
+    }
+  } else {
+    msgBody = <p>{msgObj.message}</p>;
+  }
 
   let side = msgObj.username === user.username ? "right" : "left";
-  const msgBubble = msgObj.message.map((msg) => <p>{msg}</p>);
 
   return (
     <>
@@ -55,7 +49,7 @@ const Msg = ({ msgObj, userImg, user }) => {
         />
         {msgObj.username}
         <span class="badge badge-pill badge-light text-truncate">
-          {msgBubble}
+          {msgBody}
         </span>
 
         {/* <div className="speech-bubble speech-bubble:after img-In-chat"> */}

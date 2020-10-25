@@ -21,40 +21,9 @@ function Main({ msgs }) {
   };
 
   let usersInChannel = filterMsgs().map((msg) => msg.username);
-  let groupedMsg = [];
-  if (msgs.length != 0) {
-    groupedMsg = [
-      {
-        id: msgs[0].id,
-        username: msgs[0].username,
-        message: [msgs[0].message],
-        timestamp: [msgs[0].timestamp],
-        channel: msgs[0].channel,
-      },
-    ];
-  }
   usersInChannel = [...new Set(usersInChannel)];
-  console.log(groupedMsg);
 
-  for (let i = 0; i < filterMsgs().length - 1; i++) {
-    console.log(filterMsgs()[i].username, filterMsgs()[i + 1].username);
-    console.log("groupedMsg.slice(-1)", groupedMsg.slice(-1));
-    if (filterMsgs()[i].username === filterMsgs()[i + 1].username) {
-      groupedMsg.slice(-1)[0].message.push(filterMsgs()[i + 1].message);
-      groupedMsg.slice(-1)[0].timestamp.push(filterMsgs()[i + 1].timestamp);
-    } else {
-      groupedMsg.push({
-        id: filterMsgs()[i + 1].id,
-        username: filterMsgs()[i + 1].username,
-        message: [filterMsgs()[i + 1].message],
-        timestamp: [filterMsgs()[i + 1].timestamp],
-        channel: filterMsgs()[i + 1].channel,
-      });
-    }
-  }
-
-  console.log(groupedMsg);
-  const msgList = groupedMsg.map((msg) => (
+  const msgList = filterMsgs().map((msg) => (
     <Msg
       key={msg.id + msg.username}
       msgObj={msg}
