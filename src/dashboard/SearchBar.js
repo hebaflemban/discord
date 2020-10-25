@@ -5,9 +5,9 @@ const SearchBar = props => {
 
 
   return (
-    <div className="input-group my-3">
+    <div className="my-3 mx-3">
       <input
-        className="form-control bg-light border-0 small"
+        className="form-control bg-light rounded-pill"
         placeholder={props.placeholder}
         name="search"
         type="text"

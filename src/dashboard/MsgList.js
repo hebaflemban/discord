@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 // components
 import Msg from "./Msg";
 import Loading from "./Loading";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 
 const MsgList = ({ msgs }) => {
   const [query, setQeury] = useState("");
@@ -39,7 +39,7 @@ const MsgList = ({ msgs }) => {
 
   return (
     <div className="border border-warning m-5">
-      <SearchBar onChange={setQeury} placeholder="Search for Message" />
+      {/* <SearchBar onChange={setQeury} placeholder="Search for Message" /> */}
       <h1>this is the msg list</h1>
       {msgList}
     </div>

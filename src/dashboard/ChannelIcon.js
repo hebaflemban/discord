@@ -18,19 +18,24 @@ const ChannelList = (props) => {
   const handleClick = (chnl) => {
     const draft = localStorage.getItem(`msgInLocalStorage_${chnl.id}`);
     props.selectChannel(chnl.id, draft);
-    console.log(chnl);
+    console.log(chnl)
   };
 
-  let chanelCards = filterChannels().map((chnl) => (
-    <div key={chnl.name + chnl.id}>
-      <p className="h5 rounded-pill chnl-menu btn-outline-secondary text-white"
-        onClick={() => handleClick(chnl)}
-      >
-        {chnl.name}
-        <small className="text-muted"> by {chnl.owner}</small>
-      </p>
-    </div>
-  ));
+  let chanelCards = filterChannels().map((chnl) => {
+    if (chnl.image_url === "") {
+      return (
+        <div>NO IMG</div>
+
+      )
+    } else {
+      return (
+        <div className="container-fluid px-0">
+          <img src={chnl.image_url} alt="" className="img-fluid rounded-circle" ></img>
+        </div>
+        // <div>YES IMG</div>
+      )
+    }
+  });
 
   if (props.loadingChannels) return <Loading />;
 
@@ -40,7 +45,7 @@ const ChannelList = (props) => {
       <div className="sidebar-heading text-white">
         channels
       </div>
-      <SearchBar onChange={setQeury} className="" placeholder="Search for Channel" />
+      {/* <SearchBar onChange={setQeury} className="" placeholder="Search for Channel" /> */}
       <div className="mx-3">
         {chanelCards}
       </div>
