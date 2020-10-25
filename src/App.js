@@ -16,6 +16,7 @@ import Dashborad from "./dashboard/";
 import Signup from "./welcome/SignupForm";
 import Login from "./welcome/LoginForm";
 import Welcome from "./welcome/";
+import Profile from "./dashboard/Profile";
 
 //
 import "./loader.js";
@@ -39,6 +40,9 @@ function App({
       </Route>
       <Route path="/dashboard">
         <Dashborad />
+      </Route>
+      <Route path="/profile">
+        <Profile />
       </Route>
       <Route path="/">
         <Welcome />
