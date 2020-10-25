@@ -11,9 +11,9 @@ body {
 
 .chat_window {
   position: absolute;
-  width: calc(100% - 20px);
-  max-width: 800px;
-  height: 500px;
+  width: calc(100%);
+  max-width: 1220px;
+  height: 670px;
   border-radius: 10px;
   background-color: #fff;
   left: 50%;

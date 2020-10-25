@@ -1,5 +1,6 @@
 import React from "react";
 import processMsgs from "./utils";
+import $ from "jquery";
 
 /*
 id(pin):12603
@@ -30,26 +31,34 @@ const Msg = ({ key, msgObj, userImg }) => {
     msgBody = <p>{msgObj.message}</p>;
   }
 
-  // chanel_id, id, msg, timestamp, username
   return (
-    <div className="container border border-primary my-3">
-      <div className="container">
-        <div className="container row">
-          <div className="col-2">
-            {" "}
-            <img
-              className="user-profile rounded-circle"
-              src={`/profileImages/${userImg}.png`}
-              alt={`${msgObj.username}'s profile image`}
-            />
-          </div>
-          <div className="col-2">{msgObj.username}</div>
-          <div className="col-8">{msgBody}</div>
-          <p>{msgObj.timestamp}</p>
-        </div>
-      </div>
-    </div>
+    <li>
+      <img
+        className="user-profile rounded-circle"
+        src={`/profileImages/${userImg}.png`}
+        alt={`${msgObj.username}'s profile image`}
+      />
+      <p>{msgBody}</p>
+    </li>
   );
 };
 
 export default Msg;
+
+// <div classNameName="container border border-primary my-3">
+//   <div className="container">
+//     <div className="container row">
+//       <div className="col-2">
+//         {" "}
+//         <img
+//           className="user-profile rounded-circle"
+//           src={`/profileImages/${userImg}.png`}
+//           alt={`${msgObj.username}'s profile image`}
+//         />
+//       </div>
+//       <div className="col-2">{msgObj.username}</div>
+//       <div className="col-8">{msgBody}</div>
+//       <p>{msgObj.timestamp}</p>
+//     </div>
+//   </div>
+// </div>;
