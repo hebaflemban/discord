@@ -30,7 +30,7 @@ function Welcome({ user }) {
                       </div>
                       <hr />
                       <div className="text-center">
-                        <p>this is a place where humans and cats can chat for fun! dont worry your cat is not here, <small>maybe?</small></p>
+                        <p>this is a place where humans and dogs can chat and chill! dont worry your cat is not here, <small>maybe?</small></p>
                       </div>
                       <hr />
                       <div className="text-center">

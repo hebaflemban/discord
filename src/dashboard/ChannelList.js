@@ -21,9 +21,9 @@ const ChannelList = (props) => {
   };
 
   let chanelCards = filterChannels().map((chnl) => (
-    <div key={chnl.name + chnl.id}>
+    <div key={chnl.name + chnl.id} className={props.current_channel.id === chnl.id ? "btn-block my-4 btn-outline-light active btn-round shadow": "btn-block my-4 btn-outline-light btn-round shadow"}>
       <p
-        className="h5 rounded-pill chnl-menu btn-outline-secondary text-white"
+        className="h5"
         onClick={() => handleClick(chnl)}
       >
         {chnl.name}

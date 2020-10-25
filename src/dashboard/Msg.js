@@ -19,7 +19,7 @@ const Msg = ({ msgObj, userImg, user }) => {
   processMsgs(msgObj);
   if (msgObj.message.match(imgRegex)) {
     // msgBody = <a href={msg.message} target="_blank">{msg.message}</a>
-    msgBody = <img src={msgObj.message} alt="" />;
+    msgBody = <img src={msgObj.message} className="img-fluid rounded" alt="" />;
   } else if (msgObj.message.match(urlRegex)) {
     if (msgObj.message.match(urlRegex)) {
       msgBody = (
@@ -41,20 +41,53 @@ const Msg = ({ msgObj, userImg, user }) => {
 
   return (
     <>
-      <div className={`text-${side}`}>
-        <img
-          className="user-profile rounded-circle"
-          src={`/profileImages/${userImg}.png`}
-          alt={`${msgObj.username}'s profile`}
-        />
-        {msgObj.username}
-        <span class="badge badge-pill badge-light text-truncate">
-          {msgBody}
-        </span>
+      <div className="" className={`row container text-${side}`}>
+        {side === "right" ?
+          <>
+            <div className="col-md-11 text-right float-right">
+              <div className="container">
+                <p className="h5"> <small>time</small> </p>
+              </div>
+              <div className="container text-right">
+                <span class="btn btn-pill btn-light active shadow  text-truncate">
+                  {msgBody}
+                </span>
+              </div>
+            </div>
+            <div className="col-md-1">
+              <img
+                className="img-fluid rounded-circle"
+                src={`/profileImages/${userImg}.png`}
+                alt={`${msgObj.username}'s profile`}
+              />
+            </div>
 
-        {/* <div className="speech-bubble speech-bubble:after img-In-chat"> */}
-        {/* {msgObj.timestamp} */}
+          </>
+          :
+          <>
+            <div className="col-md-1">
+
+              <img
+                className="img-fluid rounded-circle"
+                src={`/profileImages/${userImg}.png`}
+                alt={`${msgObj.username}'s profile`}
+              />
+            </div>
+            <div className="col-md-11">
+              <div className="row">
+                <p className="h5"> {msgObj.username} - <small>time</small> </p>
+              </div>
+              <div className="row">
+                <span class="btn btn-pill btn-light active shadow  text-truncate">
+                  {msgBody}
+                </span>
+              </div>
+            </div>
+          </>
+        }
       </div>
+      {/* copy from me */}
+
     </>
   );
 };

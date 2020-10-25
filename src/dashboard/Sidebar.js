@@ -43,13 +43,17 @@ const Sidebar = ({ user, addChannel, logout }) => {
             className="sidebar-brand d-flex align-items-center justify-content-center mt-5"
             href="index.html"
           >
-            <div className="sidebar-brand-icon">
-              {/* <Logo className="w-50 img-fluid"/> */}
-              <img src={logoImg} alt="Logo" className="img-fluid w-50" />
+            <div className="container">
+              <div className="col-12">
+                <sup><img src={logoImg} alt="Logo" className="img-fluid w-25" /></sup>
+              </div>
+              <div className="col-12">
+                <div className=" h2 sidebar-brand-text text-white ">
+                  Not Discord
+                </div>
+              </div>
             </div>
-            <div className="sidebar-brand-text ">
-              Discord <sup>2</sup>
-            </div>
+
           </a>
           <hr className="sidebar-divider my-4" />
           <li class="nav-item mx-3">
@@ -62,7 +66,7 @@ const Sidebar = ({ user, addChannel, logout }) => {
           <li class="nav-item mx-3">
             <button
               onClick={logout}
-              class="btn btn-block btn-outline-danger btn-round"
+              class="btn btn-block btn-outline-light btn-round"
             >
               <i class="fas fa-fw fa-chart-area"></i>
               <span>LOGOUT</span>
@@ -98,63 +102,63 @@ const Sidebar = ({ user, addChannel, logout }) => {
           <ChannelList />
         </>
       ) : (
-        <>
-          <div className="mx-3 text-center text-white">
-            <div className="sidebar-brand-icon my-5">
-              <img src={logoImg} alt="Logo" className="img-fluid w-75" />
+          <>
+            <div className="mx-3 text-center text-white">
+              <div className="sidebar-brand-icon my-5">
+                <img src={logoImg} alt="Logo" className="img-fluid w-75" />
+              </div>
+              <div className="sidebar-brand-text ">
+                Discord <sup>2</sup>
+              </div>
+              <li class="nav-item mx-3 my-4">
+                <button class="btn btn-circle btn-outline-light btn-lg">
+                  <svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 16 16"
+                    class="bi bi-house"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"
+                    />
+                  </svg>
+                </button>
+                <p className="mt-2">home</p>
+              </li>
+              <li class="nav-item mx-3 my-4">
+                <button class="btn btn-circle btn-outline-light btn-lg">
+                  <svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 16 16"
+                    class="bi bi-box-arrow-in-left"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
+                    />
+                  </svg>
+                </button>
+                <p className="mt-2">logout</p>
+              </li>
+              <hr className="sidebar-divider my-3" />
             </div>
-            <div className="sidebar-brand-text ">
-              Discord <sup>2</sup>
-            </div>
-            <li class="nav-item mx-3 my-4">
-              <button class="btn btn-circle btn-outline-light btn-lg">
-                <svg
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 16 16"
-                  class="bi bi-house"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"
-                  />
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"
-                  />
-                </svg>
-              </button>
-              <p className="mt-2">home</p>
-            </li>
-            <li class="nav-item mx-3 my-4">
-              <button class="btn btn-circle btn-outline-light btn-lg">
-                <svg
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 16 16"
-                  class="bi bi-box-arrow-in-left"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"
-                  />
-                  <path
-                    fill-rule="evenodd"
-                    d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
-                  />
-                </svg>
-              </button>
-              <p className="mt-2">logout</p>
-            </li>
-            <hr className="sidebar-divider my-3" />
-          </div>
-          <ChannelIcon />
-        </>
-      )}
+            <ChannelIcon />
+          </>
+        )}
       <li class="nav-item mx-3 my-4 text-center">
         <button
           class="btn btn-circle btn-outline-light btn-lg"
@@ -175,20 +179,20 @@ const Sidebar = ({ user, addChannel, logout }) => {
               />
             </svg>
           ) : (
-            <svg
-              width="1em"
-              height="1em"
-              viewBox="0 0 16 16"
-              class="bi bi-chevron-right"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-              />
-            </svg>
-          )}
+              <svg
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                class="bi bi-chevron-right"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            )}
         </button>
       </li>
     </ul>
@@ -206,3 +210,4 @@ const mapStateToProps = ({ authRes }) => ({
   user: authRes.user,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+
