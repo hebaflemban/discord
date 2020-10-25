@@ -14,9 +14,11 @@ function ChatPage({ channel, messeges, msgList }) {
           {channel.name}
           <p> by: {channel.owner}</p>
         </div>
-        {msgList}
+        <div className="container mb-5">{msgList}</div>
         <ul class="messages"></ul>
-        <Send />
+        <div className="container">
+          <Send />
+        </div>
       </div>
     </>
   );
