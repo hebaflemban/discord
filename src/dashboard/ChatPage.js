@@ -5,7 +5,17 @@ import Loading from "./Loading";
 // components
 import Send from "./Send";
 function ChatPage({ channel, messeges, msgList }) {
-  if (messeges.length === 0) return <Loading />;
+  if (messeges.length === 0) return (
+    <>
+      <Loading />
+      <div className="container text-center">
+        <h1> no msgs or hmmm</h1>
+        <h3>funny gifs or inspiring code (heba wants a qoute), maybe?</h3>
+        <hr></hr>
+        <img src="https://media1.tenor.com/images/8c2ba73255de7ca335412ea24838fa87/tenor.gif"></img>
+      </div>
+    </>
+  );
 
   return (
     <>
@@ -17,8 +27,8 @@ function ChatPage({ channel, messeges, msgList }) {
         <div className="container mb-5">{msgList}</div>
         <ul class="messages"></ul>
         <div className="container">
-          <Send />
         </div>
+          <Send />
       </div>
     </>
   );

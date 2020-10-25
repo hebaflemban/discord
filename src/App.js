@@ -18,7 +18,6 @@ import Login from "./welcome/LoginForm";
 import Welcome from "./welcome/";
 
 //
-import "./loader.js";
 
 function App({
   channels,

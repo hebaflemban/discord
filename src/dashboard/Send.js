@@ -24,20 +24,20 @@ function Send(props) {
 
   const onEnter = (e) => {
     if (e.key === "Enter") {
-      try {
-        // send api request to send the msg
-        props.send(props.channel.id, msg);
-        // clear input field after sending a msg
-        setMsg(" ");
-        props.localStorage = " ";
-      } catch (error) {
-        console.log(error);
-      }
+      // try {
+      //   // send api request to send the msg
+      //   props.send(props.channel.id, msg);
+      //   // clear input field after sending a msg
+      //   setMsg(" ");
+      //   props.localStorage = " ";
+      // } catch (error) {
+      //   console.log(error);
+      // }
     }
   };
-
+  
   return (
-    <div className="input-group input-group-lg mb-2">
+    <div className="input-group input-group-lg p-2 fix-me">
       <div className="bottom_wrapper clearfix">
         <div className="message_input_wrapper">
           <input
@@ -51,36 +51,45 @@ function Send(props) {
         </div>
 
         <div className="send_message">
-          <div className="icon"></div>
-          <div className="text" onClick={onEnter}>
-            Send
+          <div className="row container-fluid">
+            <div className="col-4">
+              <button onClick={onEnter} className="btn btn-block rounded-pill">Send</button>
+              {/* <div className="text" >
+                Send
+              </div> */}
+            </div>
+            <div className="col-4 ">
+              <Dropdown>
+                <Dropdown.Toggle
+                  className="btn btn-block rounded-pill "
+                  variant=""
+                  id="dropdown-basic"
+                >
+                  😂
+            </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Picker onEmojiClick={onEmojiClick} />
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+            <div className="col-4">
+              <Dropdown>
+                <Dropdown.Toggle
+                  className="btn btn-block rounded-pill "
+                  variant=""
+                  id="dropdown-basic"
+                >
+                  GIFs
+            </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Giphy />
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
           </div>
-          <Dropdown className="btn btn-block ">
-            <Dropdown.Toggle
-              className="btn btn-block rounded-pill "
-              variant="success"
-              id="dropdown-basic"
-            >
-              😀
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Picker onEmojiClick={onEmojiClick} />
-            </Dropdown.Menu>
-          </Dropdown>
+          <div className="icon"></div>
 
-          <Dropdown>
-            <Dropdown.Toggle
-              className="btn btn-block rounded-pill "
-              variant="success"
-              id="dropdown-basic"
-            >
-              GIFs
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Giphy />
-            </Dropdown.Menu>
-          </Dropdown>
         </div>
       </div>
     </div>
