@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 // actions
 
 // components
-import Msg from "./Msg";
-import Loading from "./Loading";
+import Msg from "../dashboard/Msg";
+import Loading from "../dashboard/Loading";
 // import SearchBar from "./SearchBar";
 
 const MsgList = ({ msgs }) => {

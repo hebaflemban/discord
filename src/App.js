@@ -1,15 +1,8 @@
 import React from "react";
 import "./App.css";
-import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
 //actions
-import {
-  addChannel,
-  fetchChannels,
-  fetchMesseges,
-  send,
-} from "./redux/actions";
 
 // Components
 import Dashborad from "./dashboard/";
@@ -19,17 +12,8 @@ import Welcome from "./welcome/";
 import Profile from "./dashboard/Profile";
 
 //
-import "./loader.js";
 
-function App({
-  channels,
-  current_channel,
-  messeges,
-  addChannel,
-  fetchChannels,
-  fetchMesseges,
-  send,
-}) {
+function App({}) {
   return (
     <Switch>
       <Route path="/signup">
@@ -51,18 +35,4 @@ function App({
   );
 }
 
-const mapStateToProps = ({ channelsReducer, messegesReducer }) => ({
-  channels: channelsReducer.channels,
-  current_channel: channelsReducer.current_channel,
-  messeges: messegesReducer.messeges,
-});
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addChannel: (channelName) => dispatch(addChannel(channelName)),
-    fetchChannels: () => dispatch(fetchChannels),
-    fetchMesseges: () => dispatch(fetchMesseges),
-    send: (CHANNEL_ID, messege) => dispatch(send(CHANNEL_ID, messege)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
