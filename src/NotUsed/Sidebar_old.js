@@ -7,7 +7,7 @@ import { addChannel } from "../redux/actions";
 
 // components
 import Button from "react-bootstrap/Button";
-import ChannelList from "./ChannelList";
+import ChannelList from "../dashboard/ChannelList";
 
 function Sidebar({ user, addChannel, logout }) {
   const [chnlName, setChnlName] = useState("");

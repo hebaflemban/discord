@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { send } from "../redux/actions";
 import Picker from "emoji-picker-react";
- import Giphy from "./Giphy";
- import Dropdown from 'react-bootstrap/Dropdown'
+import Giphy from "./Giphy";
+import Dropdown from "react-bootstrap/Dropdown";
 
 function Send(props) {
   console.log("******************SEND IS RERENDED***************************");
@@ -48,47 +48,52 @@ function Send(props) {
   };
 
   return (
-    <div className="input-group input-group-lg">
-      <div className="input-group-append">
-        <span
-          className="input-group-text"
-          id="inputGroup-sizing-lg"
-          onClick={onEnter}>
-          SEND
-          </span>
+    <div className="input-group input-group-lg mb-2">
+      <div className="bottom_wrapper clearfix">
+        <div className="message_input_wrapper">
+          <input
+            type="text"
+            className="message_input"
+            placeholder="Type your message here..."
+            onChange={(event) => handleChange(event)}
+            onKeyDown={onEnter}
+            value={msg == "" ? props.localStorage : msg}
+          />
+        </div>
+
+        <div className="send_message">
+          <div className="icon"></div>
+          <div className="text" onClick={onEnter}>
+            Send
+          </div>
+          <Dropdown className="btn btn-block ">
+            <Dropdown.Toggle
+              className="btn btn-block rounded-pill "
+              variant="success"
+              id="dropdown-basic"
+            >
+              😀
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Picker onEmojiClick={onEmojiClick} />
+            </Dropdown.Menu>
+          </Dropdown>
 
           <Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-  😀
-  </Dropdown.Toggle>
+            <Dropdown.Toggle
+              className="btn btn-block rounded-pill "
+              variant="success"
+              id="dropdown-basic"
+            >
+              GIFs
+            </Dropdown.Toggle>
 
-  <Dropdown.Menu>
-  <Picker onEmojiClick={onEmojiClick} />
-    
-  </Dropdown.Menu>
-</Dropdown>
-
-<Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-  GIFs
-  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-  <Giphy/>
-    
-  </Dropdown.Menu>
-</Dropdown>
-
-
+            <Dropdown.Menu>
+              <Giphy />
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
       </div>
-      <input
-        type="text"
-        className="form-control"
-        onChange={(event) => handleChange(event)}
-        onKeyDown={onEnter}
-        placeholder={"Press Enter to send"}
-        value={msg == "" ? props.localStorage : msg}
-      />
     </div>
   );
 }
@@ -109,8 +114,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStatToProps, mapDispatchToProps)(Send);
-
-
 
 /*
 
