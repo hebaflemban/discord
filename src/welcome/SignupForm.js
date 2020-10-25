@@ -34,11 +34,8 @@ const SignupForm = ({ signup, user, error, reset }) => {
     }
   };
   const errorAlert = (error) => {
-    console.log(typeof error);
     let x = JSON.parse(error);
     let errorMsg = x.username;
-    console.log(x);
-    //console.log(x.non_field_errors[0]);
 
     Swal.fire({
       icon: "error",

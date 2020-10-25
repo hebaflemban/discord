@@ -4,9 +4,7 @@ import { connect } from "react-redux";
 // components
 import ChatPage from "./ChatPage";
 import Navbar from "./Navbar";
-import Send from "./Send";
 import Msg from "./Msg";
-import Footer from "./Footer";
 
 function Main({ msgs }) {
   const [query, setQeury] = useState("");
@@ -30,7 +28,6 @@ function Main({ msgs }) {
       userImg={`profile_${usersInChannel.indexOf(msg.username)}`}
     ></Msg>
   ));
-  console.log("msgList", msgList);
 
   return (
     <div id="content-wrapper" className="d-flex flex-column">

@@ -23,14 +23,10 @@ const LoginForm = ({ login, user, error, reset }) => {
     event.preventDefault();
     login(userData);
   };
-  
-  const errorAlert = (error) => {
 
-    console.log(typeof error);
+  const errorAlert = (error) => {
     let x = JSON.parse(error);
     let errorMsg = x.non_field_errors[0];
-    console.log(typeof x);
-    console.log(x.non_field_errors[0]);
 
     Swal.fire({
       icon: "error",
@@ -66,41 +62,55 @@ const LoginForm = ({ login, user, error, reset }) => {
                     <div className="p-5">
                       <div className="text-center">
                         <Logo className="img-fluid mx-4 my-4 " />
-                        <h2 className="h2 text-gray-900 mb-4">Welcome back, buddy!</h2>
+                        <h2 className="h2 text-gray-900 mb-4">
+                          Welcome back, buddy!
+                        </h2>
                       </div>
                       <hr />
                       <div className="text-center">
                         {/* form  */}
                         <form onSubmit={handleSubmit} className="user">
                           <div className="form-group">
-                            <input className="form-control form-control-user"
+                            <input
+                              className="form-control form-control-user"
                               type="text"
                               id="username"
                               value={username}
                               name="username"
-                              placeholder="Username" required="required"
-                              onChange={handleChange} />
+                              placeholder="Username"
+                              required="required"
+                              onChange={handleChange}
+                            />
                           </div>
                           <div className="form-group">
-                            <input className="form-control form-control-user"
+                            <input
+                              className="form-control form-control-user"
                               type="password"
                               id="password"
                               value={password}
                               name="password"
-                              placeholder="Password" required="required"
-                              onChange={handleChange} />
+                              placeholder="Password"
+                              required="required"
+                              onChange={handleChange}
+                            />
                           </div>
-                          <button type="submit" className="btn btn-outline-login btn-round btn-block my-3">Login</button>
+                          <button
+                            type="submit"
+                            className="btn btn-outline-login btn-round btn-block my-3"
+                          >
+                            Login
+                          </button>
                         </form>
                       </div>
                       <hr />
                       <div className="text-center">
                         <p>Dont hava an account ? join us for free!</p>
                         <Link className="text-decoration-none" to={"/signup"}>
-                          <button className="btn btn-outline-signup btn-round btn-block my-3">Signup</button>
+                          <button className="btn btn-outline-signup btn-round btn-block my-3">
+                            Signup
+                          </button>
                         </Link>
                       </div>
-
                     </div>
                   </div>
                 </div>

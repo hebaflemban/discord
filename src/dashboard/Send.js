@@ -6,14 +6,7 @@ import Giphy from "./Giphy";
 import Dropdown from "react-bootstrap/Dropdown";
 
 function Send(props) {
-  console.log("******************SEND IS RERENDED***************************");
-  console.log(props.localStorage);
-
-  let draft = "" + props.localStorage;
-
-  console.log(draft);
   const [msg, setMsg] = useState("");
-  console.log(msg);
 
   const handleChange = (event) => {
     setMsg(event.target.value);
@@ -31,10 +24,6 @@ function Send(props) {
 
   const onEnter = (e) => {
     if (e.key === "Enter") {
-      console.log("**********************");
-      console.log(props.channel.id);
-      console.log("**********************");
-
       try {
         // send api request to send the msg
         props.send(props.channel.id, msg);
@@ -57,7 +46,7 @@ function Send(props) {
             placeholder="Type your message here..."
             onChange={(event) => handleChange(event)}
             onKeyDown={onEnter}
-            value={msg == "" ? props.localStorage : msg}
+            value={msg === "" ? props.localStorage : msg}
           />
         </div>
 

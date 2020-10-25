@@ -45,7 +45,7 @@ const Msg = ({ msgObj, userImg, user }) => {
         <img
           className="user-profile rounded-circle"
           src={`/profileImages/${userImg}.png`}
-          alt={`${msgObj.username}'s profile image`}
+          alt={`${msgObj.username}'s profile`}
         />
         {msgObj.username}
         <span class="badge badge-pill badge-light text-truncate">

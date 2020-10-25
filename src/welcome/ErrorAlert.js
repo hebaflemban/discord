@@ -12,7 +12,6 @@ import Button from "react-bootstrap/Button";
 function ErrorAlert({ reset, error }) {
   const [show, setShow] = useState(true);
   const history = useHistory();
-  console.log(error);
 
   const handleClose = () => {
     reset();

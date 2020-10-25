@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import Loading from "./Loading";
 import { selectChannel, fetchMesseges } from "../redux/actions";
-import SearchBar from "./SearchBar";
 
 const ChannelList = (props) => {
   const [query, setQeury] = useState("");
@@ -18,22 +17,22 @@ const ChannelList = (props) => {
   const handleClick = (chnl) => {
     const draft = localStorage.getItem(`msgInLocalStorage_${chnl.id}`);
     props.selectChannel(chnl.id, draft);
-    console.log(chnl)
   };
 
   let chanelCards = filterChannels().map((chnl) => {
     if (chnl.image_url === "") {
-      return (
-        <div>NO IMG</div>
-
-      )
+      return <div>NO IMG</div>;
     } else {
       return (
         <div className="container-fluid px-0">
-          <img src={chnl.image_url} alt="" className="img-fluid rounded-circle" ></img>
+          <img
+            src={chnl.image_url}
+            alt=""
+            className="img-fluid rounded-circle"
+          ></img>
         </div>
         // <div>YES IMG</div>
-      )
+      );
     }
   });
 
@@ -42,13 +41,9 @@ const ChannelList = (props) => {
   return (
     <div className="scrollable">
       <hr className="sidebar-divider my-3" />
-      <div className="sidebar-heading text-white">
-        channels
-      </div>
+      <div className="sidebar-heading text-white">channels</div>
       {/* <SearchBar onChange={setQeury} className="" placeholder="Search for Channel" /> */}
-      <div className="mx-3">
-        {chanelCards}
-      </div>
+      <div className="mx-3">{chanelCards}</div>
     </div>
   );
 };

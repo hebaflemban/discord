@@ -18,12 +18,12 @@ const ChannelList = (props) => {
   const handleClick = (chnl) => {
     const draft = localStorage.getItem(`msgInLocalStorage_${chnl.id}`);
     props.selectChannel(chnl.id, draft);
-    console.log(chnl);
   };
 
   let chanelCards = filterChannels().map((chnl) => (
     <div key={chnl.name + chnl.id}>
-      <p className="h5 rounded-pill chnl-menu btn-outline-secondary text-white"
+      <p
+        className="h5 rounded-pill chnl-menu btn-outline-secondary text-white"
         onClick={() => handleClick(chnl)}
       >
         {chnl.name}
@@ -37,13 +37,13 @@ const ChannelList = (props) => {
   return (
     <div className="scrollable">
       <hr className="sidebar-divider my-3" />
-      <div className="sidebar-heading text-white">
-        channels
-      </div>
-      <SearchBar onChange={setQeury} className="" placeholder="Search for Channel" />
-      <div className="mx-3">
-        {chanelCards}
-      </div>
+      <div className="sidebar-heading text-white">channels</div>
+      <SearchBar
+        onChange={setQeury}
+        className=""
+        placeholder="Search for Channel"
+      />
+      <div className="mx-3">{chanelCards}</div>
     </div>
   );
 };

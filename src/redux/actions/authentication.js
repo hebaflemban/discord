@@ -9,7 +9,6 @@ export const isTokenValid = () => {
     const token = Cookies.get("token");
     if (token) {
       const user = decode(token);
-      console.log("do we have a token, user?", token, user);
 
       if (user.exp >= Date.now() / 1000) {
         instance.defaults.headers.Authorization = `jwt ${token}`;

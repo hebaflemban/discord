@@ -23,7 +23,6 @@ export const fetchChannels = () => async (dispatch) => {
     });
   } catch (error) {
     console.error(error);
-    console.log("Channels couldn't be fetched");
   }
 };
 
@@ -53,10 +52,6 @@ export const selectChannel = (channel_id, localStorage) => async (dispatch) => {
   //   dispatch(fetchMesseges(channel_id));
   // }, 5000);
   dispatch(fetchMesseges(channel_id));
-
-  //cache
-  console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-  console.log("channel_id, localStorage", channel_id, localStorage);
 
   dispatch({
     type: SELECT_CHANNEL,

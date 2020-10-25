@@ -48,11 +48,10 @@ export const updateMesseges = (CHANNEL_ID, TIMESTAMP) => async (dispatch) => {
 
 export const send = (CHANNEL_ID, message) => async (dispatch) => {
   try {
-    console.log("this is what you wan to send ", message);
     const msg = { message };
     const res = await instance.post(`channels/${CHANNEL_ID}/send/ `, msg);
     const newMessage = res.data;
-    console.log("messege sent ", newMessage);
+    console.log("messege sent ");
     dispatch({
       type: SEND,
       payload: newMessage,
