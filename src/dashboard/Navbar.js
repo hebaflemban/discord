@@ -28,7 +28,7 @@ const Navbar = ({ onChange, user }) => {
         <li className="nav-item dropdown no-arrow">
           <a
             className="nav-link dropdown-toggle"
-            href="#"
+            href="http://localhost:3000/profile"
             id="userDropdown"
             role="button"
             data-toggle="dropdown"
