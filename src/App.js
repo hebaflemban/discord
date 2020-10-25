@@ -47,8 +47,7 @@ function App({
   );
 }
 
-const mapStateToProps = ({ user, channelsReducer, messegesReducer }) => ({
-  user,
+const mapStateToProps = ({ channelsReducer, messegesReducer }) => ({
   channels: channelsReducer.channels,
   current_channel: channelsReducer.current_channel,
   messeges: messegesReducer.messeges,

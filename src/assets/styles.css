@@ -10331,14 +10331,19 @@ button.bg-dark:focus {
 
 .text-left {
     text-align: left !important;
+    size:1.5rem
 }
 
 .text-right {
     text-align: right !important;
+    size:1.5rem
+
 }
 
 .text-center {
     text-align: center !important;
+    size:1.5rem
+
 }
 
 @media (min-width: 576px) {
@@ -12383,13 +12388,4 @@ background: linear-gradient(to right, #ee9ca760, #d9a7c760);
     background-color: grey;
     border-radius: 20px;
     border: 3px solid transparent;
-}
-
-.chnl-menu {
-    height: 2rem;
-}
-.sidebar-hidden {
-    width: 8rem !important;
-    max-width: 8rem !important;
-    min-width: 8rem !important;
 }
