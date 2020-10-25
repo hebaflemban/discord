@@ -12384,3 +12384,12 @@ background: linear-gradient(to right, #ee9ca760, #d9a7c760);
     border-radius: 20px;
     border: 3px solid transparent;
 }
+
+.chnl-menu {
+    height: 2rem;
+}
+.sidebar-hidden {
+    width: 8rem !important;
+    max-width: 8rem !important;
+    min-width: 8rem !important;
+}
