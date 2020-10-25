@@ -8,6 +8,7 @@ import Msg from "./Msg";
 import Loading from "./Loading";
 // import SearchBar from "./SearchBar";
 
+
 const MsgList = ({ msgs }) => {
   const [query, setQeury] = useState("");
 

@@ -22,7 +22,7 @@ const SignupForm = ({ signup, user, error, reset }) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
 
   const handleSubmit = (event) => {
-    if (userData.password === userData.checkPassword) {
+    if (userData.password === userData.confirm_password) {
       event.preventDefault();
       signup(userData);
     } else {

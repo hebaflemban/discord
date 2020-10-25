@@ -1,31 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import ChatPage from "./ChatPage";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
 
 // components
-// import MsgList from "./MsgList";
+import ChatPage from "./ChatPage";
+import Navbar from "./Navbar";
+import Send from "./Send";
+import Msg from "./Msg";
+import Footer from "./Footer";
 
-function Main(props) {
-    return (
-        <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content">
-                <Navbar />
-                <div className="container-fluid" id="chatpage">
-                    <ChatPage></ChatPage>
-                    <h1 className="h3 mb-4 text-gray-800">Blank Page</h1>
-                </div>
-                <Footer />
-            </div>
+function Main({ msgs }) {
+  const [query, setQeury] = useState("");
+  const filterMsgs = () => {
+    return msgs.filter((msg) => {
+      return `${msg.message}`.toLowerCase().includes(query.toLowerCase());
+    });
+  };
+
+  let usersInChannel = filterMsgs().map((msg) => msg.username);
+  usersInChannel = [...new Set(usersInChannel)];
+  const msgList = filterMsgs().map((msg) => (
+    <Msg
+      key={msg.id + msg.username}
+      msgObj={msg}
+      usersInChannel={usersInChannel}
+      userImg={`profile_${usersInChannel.indexOf(msg.username)}`}
+    ></Msg>
+  ));
+  return (
+    <div id="content-wrapper" className="d-flex flex-column">
+      <div id="content">
+        <Navbar onChange={setQeury} />
+        <div className="container-fluid" id="chatpage">
+          <ChatPage msgList={msgList} />
         </div>
-    );
+        <Send />
+      </div>
+    </div>
+  );
 }
 
-const mapStateToProps = ({ channelsReducer }) => {
-    return {
-        channel: channelsReducer.current_channel,
-    };
+const mapStateToProps = ({ messegesReducer }) => {
+  return {
+    msgs: messegesReducer.messeges,
+  };
 };
 
 export default connect(mapStateToProps)(Main);
