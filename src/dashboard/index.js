@@ -8,7 +8,7 @@ import ChatPage from "./ChatPage";
 // import Jumbotron from "react-bootstrap/Jumbotron";
 import Send from "./Send";
 import Sidebar from "./Sidebar";
-import Main from "./Main"
+import Main from "./Main";
 
 // due to the complexity of the dashboard
 // this file is to be the base file of the dashboard so other file can fit in one place only
@@ -35,7 +35,7 @@ function Dashboard({ user, error }) {
   // </div>
 
   return (
-    <div id="wrapper">
+    <div class="chat_window" id="wrapper">
       <Sidebar />
       <Main />
     </div>

@@ -33,7 +33,7 @@ function Main({ msgs }) {
         <div className="container-fluid" id="chatpage">
           <ChatPage msgList={msgList} />
         </div>
-        <Send />
+        {/* <Send /> */}
       </div>
     </div>
   );
